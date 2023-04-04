@@ -1,7 +1,12 @@
+import Link from "next/link";
+import CounterSection from "../components/Countersection";
+
 export default function HomePage() {
   return (
-    <div>
-      <h1>Hello from Next.js</h1>
-    </div>
+    <>
+      <Link href={"./focusedbreathing"}>
+        <h2>link to focused breathing</h2>
+      </Link>
+    </>
   );
 }
