@@ -7,6 +7,9 @@ export default function HomePage() {
       <Link href={"./focusedbreathing"}>
         <h2>link to focused breathing</h2>
       </Link>
+      <Link href={"./powerbreathing"}>
+        <h2>link to power breathing</h2>
+      </Link>
     </>
   );
 }
