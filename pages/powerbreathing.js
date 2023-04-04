@@ -1,6 +1,6 @@
 import CounterSection from "../components/Countersection";
 
-export default function FocusedBreathPage({ timerDelay }) {
+export default function PowerBreathPage({ timerDelay }) {
   return (
     <>
       <header>

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { keyframes } from "styled-components";
 
 const StyledButton = styled.button`
   color: #454545;
@@ -25,24 +24,29 @@ const StyledButton = styled.button`
 
 export default function Counter({ timerDelay }) {
   const [count, setCount] = useState(0);
-
   const [isActive, setIsActive] = useState(false);
+  const [intervalId, setIntervalId] = useState(null);
 
   const handleClick = () => {
     const breathInterval = setInterval(() => {
       setCount((prevCount) => {
         if (prevCount === 40) {
           clearInterval(breathInterval);
-
           setIsActive(false);
           return prevCount;
         }
         return prevCount + 1;
       });
     }, timerDelay);
-
     setIsActive(true);
+    setIntervalId(breathInterval);
   };
+
+  useEffect(() => {
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
 
   return (
     <>
