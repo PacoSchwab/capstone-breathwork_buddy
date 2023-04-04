@@ -9,7 +9,7 @@ export default createGlobalStyle`
 
   body {
     margin: 0;
-    font-family: system-ui, sans-serif;
+    font-family: serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",;
     background-color: #FFE6C7;
   }
 `;
