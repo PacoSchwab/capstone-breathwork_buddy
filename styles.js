@@ -9,7 +9,7 @@ export default createGlobalStyle`
 
   body {
     margin: 0;
-    font-family: "Roboto", system-ui;
+    font-family: system-ui, sans-serif;
     background-color: #FFE6C7;
   }
 `;
