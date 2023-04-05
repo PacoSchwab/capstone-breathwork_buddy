@@ -8,6 +8,7 @@ const StyledMain = styled.main`
   gap: 4rem;
   height: 100vh;
 `;
+
 export default function Layout({ children }) {
   return (
     <>

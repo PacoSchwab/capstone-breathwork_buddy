@@ -1,12 +1,12 @@
 import CounterSection from "../components/Countersection";
 
-export default function PowerBreathPage({ timerDelay }) {
+export default function PowerBreathPage({ breathIntervalDelay }) {
   return (
     <>
       <header>
         <h1>Power Breathing</h1>
       </header>
-      <CounterSection timerDelay="2000" />
+      <CounterSection breathIntervalDelay="2000" />
     </>
   );
 }

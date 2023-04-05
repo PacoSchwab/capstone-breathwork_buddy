@@ -11,5 +11,8 @@ export default createGlobalStyle`
     margin: 0;
     font-family: serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",;
     background-color: #FFE6C7;
-  }
+
+}
+
+
 `;
