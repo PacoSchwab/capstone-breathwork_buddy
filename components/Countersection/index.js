@@ -1,9 +1,9 @@
 import Counter from "../Counter";
 
-export default function CounterSection({ timerDelay }) {
+export default function CounterSection({ breathIntervalDelay }) {
   return (
     <>
-      <Counter timerDelay={timerDelay} />
+      <Counter breathIntervalDelay={breathIntervalDelay} />
     </>
   );
 }

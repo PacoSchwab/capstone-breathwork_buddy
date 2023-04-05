@@ -22,41 +22,85 @@ const StyledButton = styled.button`
   }
 `;
 
-export default function Counter({ timerDelay }) {
-  const [count, setCount] = useState(0);
-  const [isActive, setIsActive] = useState(false);
-  const [intervalId, setIntervalId] = useState(null);
-
-  const handleClick = () => {
-    const breathInterval = setInterval(() => {
-      setCount((prevCount) => {
-        if (prevCount === 40) {
-          clearInterval(breathInterval);
-          setIsActive(false);
-          return prevCount;
-        }
-        return prevCount + 1;
-      });
-    }, timerDelay);
-    setIsActive(true);
-    setIntervalId(breathInterval);
-  };
+export default function Counter({ breathIntervalDelay }) {
+  const [breathCount, setBreathCount] = useState(0);
+  const [isBreathActive, setIsBreathActive] = useState(false);
+  const [breathIntervalId, setBreathIntervalId] = useState(null);
+  const [showRetentionCounter, setShowRetentionCounter] = useState(false);
+  const [retentionCount, setRetentionCount] = useState(0);
+  const [retentionIntervalId, setRetentionIntervalId] = useState(null);
 
   useEffect(() => {
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
+    let breathInterval;
+    if (isBreathActive) {
+      const breathInterval = setInterval(() => {
+        setBreathCount((prevCount) => {
+          if (prevCount === 40) {
+            clearInterval(breathInterval);
+            setIsBreathActive(false);
+            setShowRetentionCounter(true);
+            return prevCount;
+          }
+          return prevCount + 1;
+        });
+      }, breathIntervalDelay);
+      setBreathIntervalId(breathInterval);
+    }
+    return () => clearInterval(breathInterval);
+  }, [isBreathActive]);
+
+  useEffect(() => {
+    if (breathCount === 40) {
+      const retentionInterval = setInterval(() => {
+        setRetentionCount((prevCount) => prevCount + 1);
+      }, 1000);
+      setRetentionIntervalId(retentionInterval);
+    }
+    return () => clearInterval(retentionIntervalId);
+  }, [breathCount]);
+
+  const handleBreathClick = () => {
+    if (isBreathActive) {
+      clearInterval(breathIntervalId);
+      setIsBreathActive(false);
+      setBreathCount(0);
+    } else {
+      setIsBreathActive(true);
+    }
+  };
+
+  const handleRetentionCounterClick = () => {
+    clearInterval(retentionIntervalId);
+    setRetentionCount(0);
+  };
+
+  const formattedTime = (time) => {
+    return time < 10 ? `0${time}` : time;
+  };
+
+  const minutes = Math.floor(retentionCount / 60);
+  const seconds = retentionCount % 60;
+  const displayTime = `${formattedTime(minutes)}:${formattedTime(seconds)}`;
 
   return (
     <>
-      <StyledButton
-        isActive={isActive}
-        onClick={handleClick}
-        disabled={isActive ? true : false}
-      >
-        {isActive ? `${count}` : "Click and breathe"}
-      </StyledButton>
+      {showRetentionCounter ? (
+        <StyledButton onClick={handleRetentionCounterClick}>
+          {displayTime}
+        </StyledButton>
+      ) : (
+        <StyledButton
+          isActive={isBreathActive}
+          onClick={handleBreathClick}
+          disabled={isBreathActive}
+        >
+          {isBreathActive
+            ? `${breathCount}`
+            : breathCount === 40
+            ? ""
+            : "Click and breathe"}
+        </StyledButton>
+      )}
     </>
   );
 }
