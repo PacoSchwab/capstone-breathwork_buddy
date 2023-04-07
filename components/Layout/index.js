@@ -7,6 +7,8 @@ const StyledMain = styled.main`
   align-items: center;
   gap: 4rem;
   height: 100vh;
+  max-width: 80%;
+  margin: 0 auto;
 `;
 
 export default function Layout({ children }) {
