@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import styled from "styled-components";
 import { useRouter } from "next/router";
 import { StyledButton } from "../../styles/StyledButton";
 import { StyledInstruction } from "../../styles/StyledInstruction";
@@ -113,7 +112,7 @@ export default function Counter({ breathIntervalDelay }) {
           <StyledInstruction>Hold breath</StyledInstruction> {displayTime}
         </StyledButton>
       ) : isRetentionFinished ? (
-        <StyledButton isRetentionFinished={isRetentionFinished}>
+        <StyledButton isRetentionFinished>
           <StyledInstruction2>Hold breath</StyledInstruction2>{" "}
           {breathHoldCountdown}
         </StyledButton>
