@@ -1,5 +1,5 @@
-import { StyledButton } from "../components/Counter";
 import { useRouter } from "next/router";
+import { StyledButton } from "../styles/StyledButton";
 
 export default function SuccessPage() {
   const router = useRouter();

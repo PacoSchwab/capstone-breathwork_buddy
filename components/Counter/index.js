@@ -1,48 +1,11 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-
-export const StyledButton = styled.button`
-  color: #454545;
-  box-shadow: 0px 35px 68px 0px rgba(255, 165, 89, 0.5),
-    inset 0px -5px 16px 0px rgba(255, 165, 89, 0.6),
-    inset 0px 11px 28px 0px rgb(255, 255, 255);
-  backdrop-filter: blur(3px);
-  border: 3px solid #454545;
-  border-radius: 50%;
-  width: 10rem;
-  height: 10rem;
-  font-size: ${({ isActive, isRetentionFinished, retention }) =>
-    isActive || isRetentionFinished ? "6rem" : retention ? "3rem" : "2rem"};
-  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
-
-  &:visited {
-    font-size: 5rem;
-  }
-  &:hover {
-    cursor: url("/cursor-blur-s.png"), auto;
-  }
-  &:active {
-    cursor: url("/cursor-trans-s.png"), auto;
-  }
-  &:disabled {
-    color: #454545;
-    background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
-  }
-`;
-
-const StyledInstruction = styled.p`
-  color: #454545;
-  font-size: 1rem;
-  margin-bottom: 0;
-`;
-
-const StyledInstruction2 = styled.p`
-  color: #454545;
-  font-size: 1rem;
-  margin-top: 0;
-  margin-bottom: 0;
-`;
+import { StyledButton } from "../../styles/StyledButton";
+import { StyledInstruction } from "../../styles/StyledInstruction";
+import { StyledInstruction2 } from "../../styles/StyledInstruction2";
+import { StyledRoundCounter } from "../../styles/StyledRoundCounter";
+import { StyledSpan } from "../../styles/StyledSpan";
 
 export default function Counter({ breathIntervalDelay }) {
   const [breathCount, setBreathCount] = useState(0);
@@ -147,11 +110,11 @@ export default function Counter({ breathIntervalDelay }) {
     <>
       {showRetentionCounter ? (
         <StyledButton onClick={handleRetentionCounterClick} retention>
-          <StyledInstruction2>Hold breath</StyledInstruction2> {displayTime}
+          <StyledInstruction>Hold breath</StyledInstruction> {displayTime}
         </StyledButton>
       ) : isRetentionFinished ? (
         <StyledButton isRetentionFinished={isRetentionFinished}>
-          <StyledInstruction>Hold breath</StyledInstruction>{" "}
+          <StyledInstruction2>Hold breath</StyledInstruction2>{" "}
           {breathHoldCountdown}
         </StyledButton>
       ) : (
@@ -161,15 +124,22 @@ export default function Counter({ breathIntervalDelay }) {
           disabled={isBreathActive}
         >
           {isBreathActive ? (
-            <span>
+            <StyledSpan>
               <StyledInstruction>Breathe</StyledInstruction> {breathCount}
-            </span>
+            </StyledSpan>
           ) : breathCount === 40 ? (
             ""
           ) : (
             "Click and breathe"
           )}
         </StyledButton>
+      )}
+      {flowCounter < 1 ? (
+        <StyledRoundCounter>Round 1/3</StyledRoundCounter>
+      ) : flowCounter < 2 ? (
+        <StyledRoundCounter>Round 2/3</StyledRoundCounter>
+      ) : (
+        <StyledRoundCounter>Round 3/3</StyledRoundCounter>
       )}
     </>
   );
