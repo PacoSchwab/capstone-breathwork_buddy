@@ -10,6 +10,9 @@ export default function HomePage() {
       <Link href={"./powerbreathing"}>
         <h2>link to power breathing</h2>
       </Link>
+      <Link href={"./triplebreathing"}>
+        <h2>link to 4-7-8 breathing</h2>
+      </Link>
     </>
   );
 }
