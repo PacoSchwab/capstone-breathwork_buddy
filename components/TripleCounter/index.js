@@ -4,8 +4,12 @@ import { StyledButton } from "../../styles/StyledButton";
 import { StyledSpan } from "../../styles/StyledSpan";
 import { StyledInstruction2 } from "../../styles/StyledInstruction2";
 import { StyledRoundCounter } from "../../styles/StyledRoundCounter";
+import { StyledMusicButton } from "../../styles/StyledMusicButton";
+import { StyledCounterSection } from "../../styles/StyledCounterSection";
+import { StyledVolumeControl } from "../../styles/StyledVolumeControl";
+import useAudio from "../useAudio";
 
-export default function TripleCounter() {
+export default function TripleCounter({ breathIntervalDelay }) {
   const [tripleCounterOne, setTripleCounterOne] = useState(4);
   const [tripleCounterTwo, setTripleCounterTwo] = useState(7);
   const [tripleCounterThree, setTripleCounterThree] = useState(8);
@@ -25,6 +29,31 @@ export default function TripleCounter() {
 
   const router = useRouter();
 
+  const {
+    playTripleCounter,
+    stopTripleCounter,
+    playTripleCounterMusic,
+    stopTripleCounterMusic,
+    audioVolume,
+    setAudioVolume,
+    musicVolume,
+    setMusicVolume,
+    playGong,
+  } = useAudio({ breathIntervalDelay });
+
+  useEffect(() => {
+    function handlePopState() {
+      stopTripleCounter();
+      stopTripleCounterMusic();
+    }
+
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [stopTripleCounter, stopTripleCounterMusic]);
+
   useEffect(() => {
     let tripleCounterOneInterval;
     if (isTripleCounterOneActive) {
@@ -34,6 +63,7 @@ export default function TripleCounter() {
             clearInterval(tripleCounterOneInterval);
             setIsTripleCounterOneActive(false);
             setIsTripleCounterTwoActive(true);
+            playTripleCounterMusic();
 
             return prevCount;
           }
@@ -90,6 +120,23 @@ export default function TripleCounter() {
     setIsTripleCounterOneActive(true);
     setIsTripleCounterTwoActive(false);
     setIsTripleCounterThreeActive(false);
+    playTripleCounter();
+  };
+
+  const handleIncreaseAudioVolume = () => {
+    setAudioVolume(audioVolume + 0.1);
+  };
+
+  const handleDecreaseAudioVolume = () => {
+    setAudioVolume(audioVolume - 0.1);
+  };
+
+  const handleIncreaseMusicVolume = () => {
+    setMusicVolume(musicVolume + 0.1);
+  };
+
+  const handleDecreaseMusicVolume = () => {
+    setMusicVolume(musicVolume - 0.1);
   };
 
   useEffect(() => {
@@ -100,34 +147,72 @@ export default function TripleCounter() {
 
   return (
     <>
-      <StyledButton
-        onClick={() =>
-          isTripleCounterOneActive ||
-          isTripleCounterTwoActive ||
-          isTripleCounterThreeActive
-            ? router.push("/success")
-            : setIsTripleCounterOneActive(true)
-        }
-      >
-        {isTripleCounterThreeActive ? (
-          <StyledSpan tripleCount>
-            <StyledInstruction2>Exhale</StyledInstruction2>
-            {tripleCounterThree}
-          </StyledSpan>
-        ) : isTripleCounterTwoActive ? (
-          <StyledSpan tripleCount>
-            <StyledInstruction2>Hold breath</StyledInstruction2>
-            {tripleCounterTwo}
-          </StyledSpan>
-        ) : isTripleCounterOneActive ? (
-          <StyledSpan tripleCount>
-            <StyledInstruction2>Inhale</StyledInstruction2>
-            {tripleCounterOne}
-          </StyledSpan>
-        ) : (
-          "Click and breathe"
-        )}
-      </StyledButton>
+      <StyledCounterSection>
+        <StyledVolumeControl>
+          <StyledMusicButton
+            onClick={handleIncreaseAudioVolume}
+            disabled={audioVolume >= 1}
+          >
+            Voice +
+          </StyledMusicButton>
+          <StyledMusicButton
+            onClick={handleDecreaseAudioVolume}
+            disabled={audioVolume <= 0}
+            decrease
+          >
+            Voice -
+          </StyledMusicButton>
+        </StyledVolumeControl>
+        <StyledButton
+          onClick={() =>
+            isTripleCounterOneActive ||
+            isTripleCounterTwoActive ||
+            isTripleCounterThreeActive
+              ? (router.push("/success"),
+                stopTripleCounter(),
+                stopTripleCounterMusic(),
+                playGong())
+              : (setIsTripleCounterOneActive(true),
+                playTripleCounterMusic(),
+                playTripleCounter())
+          }
+        >
+          {isTripleCounterThreeActive ? (
+            <StyledSpan>
+              <StyledInstruction2>Exhale</StyledInstruction2>
+              {tripleCounterThree}
+            </StyledSpan>
+          ) : isTripleCounterTwoActive ? (
+            <StyledSpan>
+              <StyledInstruction2>Hold breath</StyledInstruction2>
+              {tripleCounterTwo}
+            </StyledSpan>
+          ) : isTripleCounterOneActive ? (
+            <StyledSpan>
+              <StyledInstruction2>Inhale</StyledInstruction2>
+              {tripleCounterOne}
+            </StyledSpan>
+          ) : (
+            "Click and breathe"
+          )}
+        </StyledButton>
+        <StyledVolumeControl>
+          <StyledMusicButton
+            onClick={handleIncreaseMusicVolume}
+            disabled={musicVolume >= 1}
+          >
+            Music +
+          </StyledMusicButton>
+          <StyledMusicButton
+            onClick={handleDecreaseMusicVolume}
+            disabled={musicVolume <= 0}
+            s
+            decrease
+          >
+            Music -
+          </StyledMusicButton>
+        </StyledVolumeControl>
+      </StyledCounterSection>
       <StyledRoundCounter>Round {roundCounter}</StyledRoundCounter>
     </>
   );
