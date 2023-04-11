@@ -13,6 +13,7 @@ export const StyledButton = styled.button`
   font-size: ${({ isActive, isRetentionFinished, retention }) =>
     isActive || isRetentionFinished ? "6rem" : retention ? "3rem" : "2rem"};
   background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  margin: 0 2rem;
 
   &:visited {
     font-size: 5rem;

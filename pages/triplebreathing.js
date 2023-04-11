@@ -1,4 +1,4 @@
-import TripleCounter from "../components/TripleCounter";
+import TripleCounterSection from "../components/TripleCounterSection";
 
 export default function TripleBreathingPage() {
   return (
@@ -6,7 +6,7 @@ export default function TripleBreathingPage() {
       <header>
         <h1>4-7-8-Breathing</h1>
       </header>
-      <TripleCounter />
+      <TripleCounterSection />
     </>
   );
 }

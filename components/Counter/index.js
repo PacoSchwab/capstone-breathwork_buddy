@@ -5,6 +5,10 @@ import { StyledInstruction } from "../../styles/StyledInstruction";
 import { StyledInstruction2 } from "../../styles/StyledInstruction2";
 import { StyledRoundCounter } from "../../styles/StyledRoundCounter";
 import { StyledSpan } from "../../styles/StyledSpan";
+import { StyledCounterSection } from "../../styles/StyledCounterSection";
+import { StyledVolumeControl } from "../../styles/StyledVolumeControl";
+import { StyledMusicButton } from "../../styles/StyledMusicButton";
+import useAudio from "../useAudio";
 
 export default function Counter({ breathIntervalDelay }) {
   const [breathCount, setBreathCount] = useState(0);
@@ -20,6 +24,46 @@ export default function Counter({ breathIntervalDelay }) {
 
   const router = useRouter();
 
+  const {
+    playCounter,
+    stopCounter,
+    playCounterMusic,
+    stopCounterMusic,
+    playRetentionMusic,
+    stopRetentionMusic,
+    playCountdown,
+    stopCountdown,
+    playCountdownMusic,
+    stopCountdownMusic,
+    audioVolume,
+    setAudioVolume,
+    musicVolume,
+    setMusicVolume,
+    playGong,
+  } = useAudio({ breathIntervalDelay });
+
+  useEffect(() => {
+    function handlePopState() {
+      stopCounter();
+      stopCounterMusic();
+      stopRetentionMusic();
+      stopCountdown();
+      stopCountdownMusic();
+    }
+
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [
+    stopCounter,
+    stopCounterMusic,
+    stopRetentionMusic,
+    stopCountdown,
+    stopCountdownMusic,
+  ]);
+
   useEffect(() => {
     let breathInterval;
     if (isBreathActive) {
@@ -29,12 +73,16 @@ export default function Counter({ breathIntervalDelay }) {
             clearInterval(breathInterval);
             setIsBreathActive(false);
             setShowRetentionCounter(true);
+            stopCounter();
+            stopCounterMusic();
             return prevCount;
           }
           return prevCount + 1;
         });
       }, breathIntervalDelay);
       setBreathIntervalId(breathInterval);
+      playCounter();
+      playCounterMusic();
     }
     return () => clearInterval(breathInterval);
   }, [isBreathActive]);
@@ -45,6 +93,7 @@ export default function Counter({ breathIntervalDelay }) {
         setRetentionCount((prevCount) => prevCount + 1);
       }, 1000);
       setRetentionIntervalId(retentionInterval);
+      playRetentionMusic();
     }
     return () => clearInterval(retentionIntervalId);
   }, [breathCount]);
@@ -56,6 +105,8 @@ export default function Counter({ breathIntervalDelay }) {
         setBreathHoldCountdown((prevCount) => prevCount - 1);
       }, 1000);
       setBreathHoldIntervalId(breathHoldInterval);
+      playCountdown();
+      playCountdownMusic();
     }
     return () => clearInterval(breathHoldIntervalId);
   }, [isRetentionFinished]);
@@ -77,6 +128,7 @@ export default function Counter({ breathIntervalDelay }) {
         handleCounterRepeat();
       } else {
         router.push("/success");
+        playGong();
       }
     }
   }, [breathHoldCountdown]);
@@ -95,6 +147,23 @@ export default function Counter({ breathIntervalDelay }) {
     clearInterval(retentionIntervalId);
     setRetentionCount(0);
     setIsRetentionFinished(true);
+    stopRetentionMusic();
+  };
+
+  const handleIncreaseAudioVolume = () => {
+    setAudioVolume(audioVolume + 0.1);
+  };
+
+  const handleDecreaseAudioVolume = () => {
+    setAudioVolume(audioVolume - 0.1);
+  };
+
+  const handleIncreaseMusicVolume = () => {
+    setMusicVolume(musicVolume + 0.1);
+  };
+
+  const handleDecreaseMusicVolume = () => {
+    setMusicVolume(musicVolume - 0.1);
   };
 
   const formattedTime = (time) => {
@@ -107,32 +176,64 @@ export default function Counter({ breathIntervalDelay }) {
 
   return (
     <>
-      {showRetentionCounter ? (
-        <StyledButton onClick={handleRetentionCounterClick} retention>
-          <StyledInstruction>Hold breath</StyledInstruction> {displayTime}
-        </StyledButton>
-      ) : isRetentionFinished ? (
-        <StyledButton isRetentionFinished>
-          <StyledInstruction2>Hold breath</StyledInstruction2>{" "}
-          {breathHoldCountdown}
-        </StyledButton>
-      ) : (
-        <StyledButton
-          isActive={isBreathActive}
-          onClick={handleBreathClick}
-          disabled={isBreathActive}
-        >
-          {isBreathActive ? (
-            <StyledSpan>
-              <StyledInstruction>Breathe</StyledInstruction> {breathCount}
-            </StyledSpan>
-          ) : breathCount === 40 ? (
-            ""
-          ) : (
-            "Click and breathe"
-          )}
-        </StyledButton>
-      )}
+      <StyledCounterSection>
+        <StyledVolumeControl>
+          <StyledMusicButton
+            onClick={handleIncreaseAudioVolume}
+            disabled={audioVolume >= 1}
+          >
+            Voice +
+          </StyledMusicButton>
+          <StyledMusicButton
+            onClick={handleDecreaseAudioVolume}
+            disabled={audioVolume <= 0}
+            decrease
+          >
+            Voice -
+          </StyledMusicButton>
+        </StyledVolumeControl>
+        {showRetentionCounter ? (
+          <StyledButton onClick={handleRetentionCounterClick} retention>
+            <StyledInstruction>Hold breath</StyledInstruction> {displayTime}
+          </StyledButton>
+        ) : isRetentionFinished ? (
+          <StyledButton isRetentionFinished>
+            <StyledInstruction2>Hold breath</StyledInstruction2>{" "}
+            {breathHoldCountdown}
+          </StyledButton>
+        ) : (
+          <StyledButton
+            isActive={isBreathActive}
+            onClick={handleBreathClick}
+            disabled={isBreathActive}
+          >
+            {isBreathActive ? (
+              <StyledSpan firstCounter>
+                <StyledInstruction>Breathe</StyledInstruction> {breathCount}
+              </StyledSpan>
+            ) : breathCount === 40 ? (
+              ""
+            ) : (
+              "Click and breathe"
+            )}
+          </StyledButton>
+        )}
+        <StyledVolumeControl>
+          <StyledMusicButton
+            onClick={handleIncreaseMusicVolume}
+            disabled={musicVolume >= 1}
+          >
+            Music +
+          </StyledMusicButton>
+          <StyledMusicButton
+            onClick={handleDecreaseMusicVolume}
+            disabled={musicVolume <= 0}
+            decrease
+          >
+            Music -
+          </StyledMusicButton>
+        </StyledVolumeControl>
+      </StyledCounterSection>
       {flowCounter < 1 ? (
         <StyledRoundCounter>Round 1/3</StyledRoundCounter>
       ) : flowCounter < 2 ? (

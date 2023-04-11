@@ -1,5 +1,4 @@
 import Link from "next/link";
-import CounterSection from "../components/Countersection";
 
 export default function HomePage() {
   return (
