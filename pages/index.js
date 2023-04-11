@@ -1,17 +1,44 @@
-import Link from "next/link";
+import { StyledExerciseBackground } from "../styles/StyledExerciseBackground";
+import { StyledExerciseButton } from "../styles/StyledExerciseButton";
+import { StyledExerciseLinkText } from "../styles/StyledExerciseLinkText";
+import { StyledOverviewSection } from "../styles/StyledOverviewSection";
+import { StyledExerciseLink } from "../styles/StyledExerciseLink";
 
 export default function HomePage() {
   return (
     <>
-      <Link href={"./focusedbreathing"}>
-        <h2>link to focused breathing</h2>
-      </Link>
-      <Link href={"./powerbreathing"}>
-        <h2>link to power breathing</h2>
-      </Link>
-      <Link href={"./triplebreathing"}>
-        <h2>link to 4-7-8 breathing</h2>
-      </Link>
+      <h1>Breathwork Buddy</h1>
+      <StyledOverviewSection>
+        <StyledExerciseLink href="/focusedbreathing">
+          <StyledExerciseButton>
+            <StyledExerciseBackground
+              src="/purplesmoke.png"
+              alt="Focused Breathing"
+            />
+            <StyledExerciseLinkText>Focused Breathing</StyledExerciseLinkText>
+          </StyledExerciseButton>
+        </StyledExerciseLink>
+
+        <StyledExerciseLink href="/triplebreathing" second>
+          <StyledExerciseButton>
+            <StyledExerciseBackground
+              src="/purplesmoke.png"
+              alt="4-7-8 Breathing"
+            />
+            <StyledExerciseLinkText>4-7-8 Breathing</StyledExerciseLinkText>
+          </StyledExerciseButton>
+        </StyledExerciseLink>
+
+        <StyledExerciseLink href="/powerbreathing">
+          <StyledExerciseButton>
+            <StyledExerciseBackground
+              src="/purplesmoke.png"
+              alt="Power Breathing"
+            />
+            <StyledExerciseLinkText>Power Breathing</StyledExerciseLinkText>
+          </StyledExerciseButton>
+        </StyledExerciseLink>
+      </StyledOverviewSection>
     </>
   );
 }
