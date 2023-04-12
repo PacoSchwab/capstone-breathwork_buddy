@@ -12,5 +12,8 @@ export default createGlobalStyle`
     font-family: serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",;
     background-color: #FFE6C7;
     cursor: url('/images/cursor-s.png'), auto;
+
+    
+
 }
 `;

@@ -3,6 +3,7 @@ import { StyledExerciseButton } from "../styles/StyledExerciseButton";
 import { StyledExerciseLinkText } from "../styles/StyledExerciseLinkText";
 import { StyledOverviewSection } from "../styles/StyledOverviewSection";
 import { StyledExerciseLink } from "../styles/StyledExerciseLink";
+import Link from "next/link";
 
 export default function HomePage() {
   return (
@@ -39,6 +40,9 @@ export default function HomePage() {
           </StyledExerciseButton>
         </StyledExerciseLink>
       </StyledOverviewSection>
+      <Link href="/info" style={{ fontSize: "3rem" }}>
+        Infopage
+      </Link>
     </>
   );
 }
