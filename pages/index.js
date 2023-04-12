@@ -12,7 +12,7 @@ export default function HomePage() {
         <StyledExerciseLink href="/focusedbreathing">
           <StyledExerciseButton>
             <StyledExerciseBackground
-              src="/purplesmoke.png"
+              src="/images/purplesmoke.png"
               alt="Focused Breathing"
             />
             <StyledExerciseLinkText>Focused Breathing</StyledExerciseLinkText>
@@ -22,7 +22,7 @@ export default function HomePage() {
         <StyledExerciseLink href="/triplebreathing" second>
           <StyledExerciseButton>
             <StyledExerciseBackground
-              src="/purplesmoke.png"
+              src="/images/purplesmoke.png"
               alt="4-7-8 Breathing"
             />
             <StyledExerciseLinkText>4-7-8 Breathing</StyledExerciseLinkText>
@@ -32,7 +32,7 @@ export default function HomePage() {
         <StyledExerciseLink href="/powerbreathing">
           <StyledExerciseButton>
             <StyledExerciseBackground
-              src="/purplesmoke.png"
+              src="/images/purplesmoke.png"
               alt="Power Breathing"
             />
             <StyledExerciseLinkText>Power Breathing</StyledExerciseLinkText>
