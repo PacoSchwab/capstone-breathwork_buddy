@@ -19,10 +19,10 @@ export const StyledButton = styled.button`
     font-size: 5rem;
   }
   &:hover {
-    cursor: url("/cursor-blur-s.png"), auto;
+    cursor: url("/images/cursor-blur-s.png"), auto;
   }
   &:active {
-    cursor: url("/cursor-trans-s.png"), auto;
+    cursor: url("/images/cursor-trans-s.png"), auto;
   }
   &:disabled {
     color: #454545;

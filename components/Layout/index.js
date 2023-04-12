@@ -7,7 +7,7 @@ const StyledMain = styled.main`
   align-items: center;
   gap: 4rem;
   height: 100vh;
-  max-width: 80%;
+  max-width: 1200px;
   margin: 0 auto;
 `;
 
