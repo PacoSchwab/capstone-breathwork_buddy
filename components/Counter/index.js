@@ -9,6 +9,8 @@ import { StyledCounterSection } from "../../styles/StyledCounterSection";
 import { StyledVolumeControl } from "../../styles/StyledVolumeControl";
 import { StyledMusicButton } from "../../styles/StyledMusicButton";
 import useAudio from "../useAudio";
+import useLocalStorageState from "use-local-storage-state";
+import useStore from "../useStore";
 
 export default function Counter({ breathIntervalDelay }) {
   const [breathCount, setBreathCount] = useState(0);
@@ -21,6 +23,10 @@ export default function Counter({ breathIntervalDelay }) {
   const [breathHoldCountdown, setBreathHoldCountdown] = useState(15);
   const [breathHoldIntervalId, setBreathHoldIntervalId] = useState(null);
   const [flowCounter, setFlowCounter] = useState(0);
+  const [savedRetentionCount, setSavedRetentionCount] = useState(null);
+  /*   const [storedTimes, setStoredTimes] = useLocalStorageState("storedTimes", {
+    defaultValue: [],
+  }); */
 
   const router = useRouter();
 
@@ -41,6 +47,9 @@ export default function Counter({ breathIntervalDelay }) {
     setMusicVolume,
     playGong,
   } = useAudio({ breathIntervalDelay });
+
+  const storedTimes = useStore((state) => state.storedTimes);
+  const addStoredTime = useStore((state) => state.addStoredTime);
 
   useEffect(() => {
     function handlePopState() {
@@ -148,6 +157,7 @@ export default function Counter({ breathIntervalDelay }) {
     setRetentionCount(0);
     setIsRetentionFinished(true);
     stopRetentionMusic();
+    saveRetentionTime();
   };
 
   const handleIncreaseAudioVolume = () => {
@@ -173,6 +183,26 @@ export default function Counter({ breathIntervalDelay }) {
   const minutes = Math.floor(retentionCount / 60);
   const seconds = retentionCount % 60;
   const displayTime = `${formattedTime(minutes)}:${formattedTime(seconds)}`;
+
+  const saveRetentionTime = () => {
+    setSavedRetentionCount(retentionCount);
+  };
+
+  const date = { time: new Date() };
+
+  /*  useEffect(() => {
+    if (savedRetentionCount !== null) {
+      setStoredTimes([...storedTimes, date, savedRetentionCount]);
+      setSavedRetentionCount(null);
+    }
+  }, [savedRetentionCount]); */
+
+  useEffect(() => {
+    if (savedRetentionCount !== null) {
+      addStoredTime(savedRetentionCount);
+      setSavedRetentionCount(null);
+    }
+  }, [savedRetentionCount]);
 
   return (
     <>

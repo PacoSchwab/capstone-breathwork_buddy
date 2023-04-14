@@ -26,7 +26,9 @@ export default function InfoSection() {
             dangerous for some individuals, particularly those with certain
             medical conditions. The practice is often combined with cold showers
             or ice baths, meditation, and physical exercise to further enhance
-            its benefits.
+            its benefits. Disclaimer: This app is by no means officially related
+            to Wim Hof, his teachings or his methods. It is a personal fan
+            project.
           </StyledInfoText>
           <StyledInstructionHeadline>Instruction</StyledInstructionHeadline>
           <StyledInfoList>
