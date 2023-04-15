@@ -190,13 +190,6 @@ export default function Counter({ breathIntervalDelay }) {
 
   const date = { time: new Date() };
 
-  /*  useEffect(() => {
-    if (savedRetentionCount !== null) {
-      setStoredTimes([...storedTimes, date, savedRetentionCount]);
-      setSavedRetentionCount(null);
-    }
-  }, [savedRetentionCount]); */
-
   useEffect(() => {
     if (savedRetentionCount !== null) {
       addStoredTime(savedRetentionCount);
