@@ -61,10 +61,14 @@ export default function useAudio({ breathIntervalDelay }) {
     stopTripleCounter,
     playTripleCounterMusic,
     stopTripleCounterMusic,
-    audioVolume,
-    setAudioVolume,
-    musicVolume,
-    setMusicVolume,
+    audio: {
+      volume: audioVolume,
+      setVolume: setAudioVolume,
+    },
+    music: {
+      volume: musicVolume,
+      setVolume: setMusicVolume,
+    },
     playGong,
   };
 }

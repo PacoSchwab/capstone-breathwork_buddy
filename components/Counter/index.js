@@ -1,35 +1,20 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { StyledButton } from "../../styles/StyledButton";
-import { StyledInstruction } from "../../styles/StyledInstruction";
-import { StyledInstruction2 } from "../../styles/StyledInstruction2";
-import { StyledRoundCounter } from "../../styles/StyledRoundCounter";
-import { StyledSpan } from "../../styles/StyledSpan";
 import { StyledCounterSection } from "../../styles/StyledCounterSection";
-import { StyledVolumeControl } from "../../styles/StyledVolumeControl";
-import { StyledMusicButton } from "../../styles/StyledMusicButton";
 import useAudio from "../useAudio";
-import useLocalStorageState from "use-local-storage-state";
+import useLocalStore from "../useLocalStore";
 import useStore from "../useStore";
+import useBreathAudio from "../useBreathAudio";
+import useVolumeControl from "../useVolumeControl";
+import useClearAudio from "../useClearAudio";
+import useTimeFormatter from "../useTimeFormatter";
+import AudioControl from "../AudioControl";
+import MusicControl from "../MusicControl";
+import FlowCounter from "../FlowCounter";
+import CounterButton from "../CounterButton";
 
 export default function Counter({ breathIntervalDelay }) {
-  const [breathCount, setBreathCount] = useState(0);
-  const [isBreathActive, setIsBreathActive] = useState(false);
-  const [breathIntervalId, setBreathIntervalId] = useState(null);
-  const [showRetentionCounter, setShowRetentionCounter] = useState(false);
-  const [retentionCount, setRetentionCount] = useState(0);
-  const [retentionIntervalId, setRetentionIntervalId] = useState(null);
-  const [isRetentionFinished, setIsRetentionFinished] = useState(false);
-  const [breathHoldCountdown, setBreathHoldCountdown] = useState(15);
-  const [breathHoldIntervalId, setBreathHoldIntervalId] = useState(null);
-  const [flowCounter, setFlowCounter] = useState(0);
-  const [savedRetentionCount, setSavedRetentionCount] = useState(null);
-  /*   const [storedTimes, setStoredTimes] = useLocalStorageState("storedTimes", {
-    defaultValue: [],
-  }); */
-
   const router = useRouter();
-
   const {
     playCounter,
     stopCounter,
@@ -41,98 +26,99 @@ export default function Counter({ breathIntervalDelay }) {
     stopCountdown,
     playCountdownMusic,
     stopCountdownMusic,
-    audioVolume,
-    setAudioVolume,
-    musicVolume,
-    setMusicVolume,
+    audio,
+    music,
     playGong,
   } = useAudio({ breathIntervalDelay });
 
-  const storedTimes = useStore((state) => state.storedTimes);
-  const addStoredTime = useStore((state) => state.addStoredTime);
+  const addStoredTime = useLocalStore((state) => state.addStoredTime);
+  const breathCount = useStore((state) => state.breathCount);
+  const isBreathActive = useStore((state) => state.isBreathActive);
+  const breathIntervalId = useStore((state) => state.breathIntervalId);
+  const showRetentionCounter = useStore((state) => state.showRetentionCounter);
+  const retentionCount = useStore((state) => state.retentionCount);
+  const retentionIntervalId = useStore((state) => state.retentionIntervalId);
+  const isRetentionFinished = useStore((state) => state.isRetentionFinished);
+  const breathHoldCountdown = useStore((state) => state.breathHoldCountdown);
+  const breathHoldIntervalId = useStore((state) => state.breathHoldIntervalId);
+  const flowCounter = useStore((state) => state.flowCounter);
+  const savedRetentionCount = useStore((state) => state.savedRetentionCount);
+  const increaseBreathCount = useStore((state) => state.increaseBreathCount);
+  const increaseRetentionCount = useStore(
+    (state) => state.increaseRetentionCount
+  );
+  const decreaseBreathHoldCountdown = useStore(
+    (state) => state.decreaseBreathHoldCountdown
+  );
+  const addBreathIntervalId = useStore((state) => state.addBreathIntervalId);
+  const addRetentionIntervalId = useStore(
+    (state) => state.addRetentionIntervalId
+  );
+  const addBreathHoldIntervalId = useStore(
+    (state) => state.addBreathHoldIntervalId
+  );
+  const switchIsBreathActive = useStore((state) => state.switchIsBreathActive);
+  const switchIsRetentionFinished = useStore(
+    (state) => state.switchIsRetentionFinished
+  );
+  const switchShowRetentionCounter = useStore(
+    (state) => state.switchShowRetentionCounter
+  );
+  const resetBreathHoldCountdown = useStore(
+    (state) => state.resetBreathHoldCountdown
+  );
+  const resetBreathCount = useStore((state) => state.resetBreathCount);
+  const resetRetentionCount = useStore((state) => state.resetRetentionCount);
+  const increaseFlowCounter = useStore((state) => state.increaseFlowCounter);
+  const addSavedRetentionCount = useStore(
+    (state) => state.addSavedRetentionCount
+  );
 
-  useEffect(() => {
-    function handlePopState() {
-      stopCounter();
-      stopCounterMusic();
-      stopRetentionMusic();
-      stopCountdown();
-      stopCountdownMusic();
-    }
-
-    window.addEventListener("popstate", handlePopState);
-
-    return () => {
-      window.removeEventListener("popstate", handlePopState);
-    };
-  }, [
+  useClearAudio(
     stopCounter,
     stopCounterMusic,
     stopRetentionMusic,
     stopCountdown,
-    stopCountdownMusic,
-  ]);
+    stopCountdownMusic
+  );
 
   useEffect(() => {
     let breathInterval;
+    let retentionInterval;
+    let breathHoldInterval;
     if (isBreathActive) {
-      const breathInterval = setInterval(() => {
-        setBreathCount((prevCount) => {
-          if (prevCount === 40) {
-            clearInterval(breathInterval);
-            setIsBreathActive(false);
-            setShowRetentionCounter(true);
-            stopCounter();
-            stopCounterMusic();
-            return prevCount;
-          }
-          return prevCount + 1;
-        });
+      breathInterval = setInterval(() => {
+        if (breathCount === 40) {
+          switchIsBreathActive(false);
+          switchShowRetentionCounter(true);
+
+          const retentionInterval = setInterval(() => {
+            increaseRetentionCount();
+          }, 1000);
+
+          addRetentionIntervalId(retentionInterval);
+        } else {
+          return increaseBreathCount();
+        }
       }, breathIntervalDelay);
-      setBreathIntervalId(breathInterval);
-      playCounter();
-      playCounterMusic();
+      addBreathIntervalId(breathInterval);
     }
-    return () => clearInterval(breathInterval);
-  }, [isBreathActive]);
-
-  useEffect(() => {
-    if (breathCount === 40) {
-      const retentionInterval = setInterval(() => {
-        setRetentionCount((prevCount) => prevCount + 1);
-      }, 1000);
-      setRetentionIntervalId(retentionInterval);
-      playRetentionMusic();
-    }
-    return () => clearInterval(retentionIntervalId);
-  }, [breathCount]);
-
-  useEffect(() => {
     if (isRetentionFinished) {
-      setShowRetentionCounter(false);
-      const breathHoldInterval = setInterval(() => {
-        setBreathHoldCountdown((prevCount) => prevCount - 1);
+      switchShowRetentionCounter(false);
+      breathHoldInterval = setInterval(() => {
+        decreaseBreathHoldCountdown();
       }, 1000);
-      setBreathHoldIntervalId(breathHoldInterval);
-      playCountdown();
-      playCountdownMusic();
+      addBreathHoldIntervalId(breathHoldInterval);
     }
-    return () => clearInterval(breathHoldIntervalId);
-  }, [isRetentionFinished]);
 
-  const handleCounterRepeat = () => {
-    setBreathCount(0);
-    setIsBreathActive(true);
-    setRetentionCount(0);
-    setIsRetentionFinished(false);
-    setBreathHoldCountdown(15);
-  };
+    if (savedRetentionCount !== null) {
+      addStoredTime(savedRetentionCount);
+      addSavedRetentionCount(null);
+    }
 
-  useEffect(() => {
     if (breathHoldCountdown === 0) {
-      setIsRetentionFinished(false);
-      clearInterval(breathHoldIntervalId);
-      setFlowCounter((prevCount) => prevCount + 1);
+      switchIsRetentionFinished(false);
+      increaseFlowCounter();
       if (flowCounter < 2) {
         handleCounterRepeat();
       } else {
@@ -140,130 +126,101 @@ export default function Counter({ breathIntervalDelay }) {
         playGong();
       }
     }
-  }, [breathHoldCountdown]);
+
+    return () => {
+      clearInterval(breathInterval);
+      clearInterval(retentionInterval);
+      clearInterval(breathHoldInterval);
+    };
+  }, [
+    breathCount,
+    isBreathActive,
+    isRetentionFinished,
+    breathHoldCountdown,
+    savedRetentionCount,
+  ]);
+
+  useBreathAudio(
+    isBreathActive,
+    showRetentionCounter,
+    isRetentionFinished,
+    playCounter,
+    playCounterMusic,
+    stopCounter,
+    stopCounterMusic,
+    playRetentionMusic,
+    stopRetentionMusic,
+    playCountdown,
+    stopCountdown,
+    playCountdownMusic,
+    stopCountdownMusic
+  );
+
+  const handleCounterRepeat = () => {
+    resetBreathCount();
+    switchIsBreathActive(true);
+    resetRetentionCount(0);
+    switchIsRetentionFinished(false);
+    resetBreathHoldCountdown();
+  };
 
   const handleBreathClick = () => {
     if (isBreathActive) {
       clearInterval(breathIntervalId);
-      setIsBreathActive(false);
-      setBreathCount(0);
+      switchIsBreathActive(false);
+      resetBreathCount();
     } else {
-      setIsBreathActive(true);
+      switchIsBreathActive(true);
     }
   };
 
   const handleRetentionCounterClick = () => {
     clearInterval(retentionIntervalId);
-    setRetentionCount(0);
-    setIsRetentionFinished(true);
-    stopRetentionMusic();
+    resetRetentionCount();
+    switchIsRetentionFinished(true);
     saveRetentionTime();
   };
 
-  const handleIncreaseAudioVolume = () => {
-    setAudioVolume(audioVolume + 0.1);
-  };
+  const {
+    handleIncreaseAudioVolume,
+    handleDecreaseAudioVolume,
+    handleIncreaseMusicVolume,
+    handleDecreaseMusicVolume,
+  } = useVolumeControl({ audio, music });
 
-  const handleDecreaseAudioVolume = () => {
-    setAudioVolume(audioVolume - 0.1);
-  };
-
-  const handleIncreaseMusicVolume = () => {
-    setMusicVolume(musicVolume + 0.1);
-  };
-
-  const handleDecreaseMusicVolume = () => {
-    setMusicVolume(musicVolume - 0.1);
-  };
-
-  const formattedTime = (time) => {
-    return time < 10 ? `0${time}` : time;
-  };
-
-  const minutes = Math.floor(retentionCount / 60);
-  const seconds = retentionCount % 60;
-  const displayTime = `${formattedTime(minutes)}:${formattedTime(seconds)}`;
+  const { displayTime } = useTimeFormatter({
+    retentionCount,
+  });
 
   const saveRetentionTime = () => {
-    setSavedRetentionCount(retentionCount);
+    addSavedRetentionCount(retentionCount);
   };
-
-  const date = { time: new Date() };
-
-  useEffect(() => {
-    if (savedRetentionCount !== null) {
-      addStoredTime(savedRetentionCount);
-      setSavedRetentionCount(null);
-    }
-  }, [savedRetentionCount]);
 
   return (
     <>
       <StyledCounterSection>
-        <StyledVolumeControl>
-          <StyledMusicButton
-            onClick={handleIncreaseAudioVolume}
-            disabled={audioVolume >= 1}
-          >
-            Voice +
-          </StyledMusicButton>
-          <StyledMusicButton
-            onClick={handleDecreaseAudioVolume}
-            disabled={audioVolume <= 0}
-            decrease
-          >
-            Voice -
-          </StyledMusicButton>
-        </StyledVolumeControl>
-        {showRetentionCounter ? (
-          <StyledButton onClick={handleRetentionCounterClick} retention>
-            <StyledInstruction>Hold breath</StyledInstruction> {displayTime}
-          </StyledButton>
-        ) : isRetentionFinished ? (
-          <StyledButton isRetentionFinished>
-            <StyledInstruction2>Hold breath</StyledInstruction2>{" "}
-            {breathHoldCountdown}
-          </StyledButton>
-        ) : (
-          <StyledButton
-            isActive={isBreathActive}
-            onClick={handleBreathClick}
-            disabled={isBreathActive}
-          >
-            {isBreathActive ? (
-              <StyledSpan firstCounter>
-                <StyledInstruction>Breathe</StyledInstruction> {breathCount}
-              </StyledSpan>
-            ) : breathCount === 40 ? (
-              ""
-            ) : (
-              "Click and breathe"
-            )}
-          </StyledButton>
-        )}
-        <StyledVolumeControl>
-          <StyledMusicButton
-            onClick={handleIncreaseMusicVolume}
-            disabled={musicVolume >= 1}
-          >
-            Music +
-          </StyledMusicButton>
-          <StyledMusicButton
-            onClick={handleDecreaseMusicVolume}
-            disabled={musicVolume <= 0}
-            decrease
-          >
-            Music -
-          </StyledMusicButton>
-        </StyledVolumeControl>
+        <AudioControl
+          audio={audio}
+          handleIncreaseAudioVolume={handleIncreaseAudioVolume}
+          handleDecreaseAudioVolume={handleDecreaseAudioVolume}
+        />
+        <CounterButton
+          handleBreathClick={handleBreathClick}
+          handleRetentionCounterClick={handleRetentionCounterClick}
+          isBreathActive={isBreathActive}
+          showRetentionCounter={showRetentionCounter}
+          isRetentionFinished={isRetentionFinished}
+          breathHoldCountdown={breathHoldCountdown}
+          breathCount={breathCount}
+          displayTime={displayTime}
+        />
+        <MusicControl
+          music={music}
+          handleIncreaseMusicVolume={handleIncreaseMusicVolume}
+          handleDecreaseMusicVolume={handleDecreaseMusicVolume}
+        />
       </StyledCounterSection>
-      {flowCounter < 1 ? (
-        <StyledRoundCounter>Round 1/3</StyledRoundCounter>
-      ) : flowCounter < 2 ? (
-        <StyledRoundCounter>Round 2/3</StyledRoundCounter>
-      ) : (
-        <StyledRoundCounter>Round 3/3</StyledRoundCounter>
-      )}
+      <FlowCounter />
     </>
   );
 }
