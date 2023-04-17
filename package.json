@@ -18,7 +18,11 @@
     "react-dom": "18.2.0",
     "react-router-dom": "^6.10.0",
     "styled-components": "^5.3.6",
-    "use-sound": "^4.0.1"
+    "use-local-storage": "^2.3.6",
+    "use-local-storage-state": "^18.3.2",
+    "use-sound": "^4.0.1",
+    "victory": "^36.6.8",
+    "zustand": "^4.3.7"
   },
   "devDependencies": {
     "@svgr/webpack": "^6.5.1",
