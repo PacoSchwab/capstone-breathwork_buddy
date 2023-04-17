@@ -8,7 +8,7 @@ export default function FlowCounter() {
 
   return (
     <>
-      <StyledRoundCounter>Round {currentFlowCounter}/3</StyledRoundCounter>;
+      <StyledRoundCounter>Round {currentFlowCounter}/3</StyledRoundCounter>
     </>
   );
 }
