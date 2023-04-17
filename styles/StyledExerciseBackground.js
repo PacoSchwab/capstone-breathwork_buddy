@@ -12,7 +12,4 @@ export const StyledExerciseBackground = styled.img`
     width: 16rem;
   }
   max-height: 100vw;
-  /*  &:hover {
-    opacity: 0.6;
-  } */
 `;
