@@ -6,7 +6,7 @@ export default function PowerBreathPage({ breathIntervalDelay }) {
       <header>
         <h1>Power Breathing</h1>
       </header>
-      <CounterSection breathIntervalDelay="100" />
+      <CounterSection breathIntervalDelay="2000" />
     </>
   );
 }
