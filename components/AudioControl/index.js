@@ -7,22 +7,22 @@ export default function AudioControl({
   handleDecreaseAudioVolume,
 }) {
   return (
-    <>
-      <StyledVolumeControl>
-        <StyledMusicButton
-          onClick={handleIncreaseAudioVolume}
-          disabled={audio.volume >= 1}
-        >
-          Voice +
-        </StyledMusicButton>
-        <StyledMusicButton
-          onClick={handleDecreaseAudioVolume}
-          disabled={audio.volume <= 0}
-          decrease
-        >
-          Voice -
-        </StyledMusicButton>
-      </StyledVolumeControl>
-    </>
+    <StyledVolumeControl>
+      <StyledMusicButton
+        aria-label="Increase voice volume"
+        onClick={handleIncreaseAudioVolume}
+        disabled={audio.volume >= 1}
+      >
+        Voice +
+      </StyledMusicButton>
+      <StyledMusicButton
+        aria-label="Decrease voice volume"
+        onClick={handleDecreaseAudioVolume}
+        disabled={audio.volume <= 0}
+        decrease
+      >
+        Voice -
+      </StyledMusicButton>
+    </StyledVolumeControl>
   );
 }

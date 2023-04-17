@@ -19,15 +19,11 @@ const useLocalStore = createLocalStorageStore(
 
 export default useLocalStore;
 
-// A function that returns a custom hook that can be used to access the state.
 function createLocalStorageStore(initialStore, name) {
-  // Create a Zustand store without persistence.
   const useServerStore = create(initialStore);
-  // Create a Zustand store with persistence to local storage.
+
   const useClientStore = create(persist(initialStore, { name }));
 
-  // A custom hook that selects the appropriate store based on whether
-  // the component is hydrated or not.
   function useStore(selector, compare) {
     const [hydrated, setHydrated] = useState(false);
 

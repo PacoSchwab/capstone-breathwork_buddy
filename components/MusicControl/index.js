@@ -10,12 +10,14 @@ export default function MusicControl({
     <>
       <StyledVolumeControl>
         <StyledMusicButton
+          aria-label="Increase music volume"
           onClick={handleIncreaseMusicVolume}
           disabled={music.volume >= 1}
         >
           Music +
         </StyledMusicButton>
         <StyledMusicButton
+          aria-label="Decrease music volume"
           onClick={handleDecreaseMusicVolume}
           disabled={music.volume <= 0}
           decrease

@@ -32,44 +32,45 @@ export default function TripleCounterButton({
 
   useLoading(switchIsLoading);
 
+  function handleStopTripleCounter() {
+    if (!isLoading) {
+      isTripleCounterOneActive ||
+      isTripleCounterTwoActive ||
+      isTripleCounterThreeActive
+        ? (router.push("/success"),
+          stopTripleCounter(),
+          stopTripleCounterMusic(),
+          playGong())
+        : (switchIsTripleCounterOneActive(true),
+          playTripleCounterMusic(),
+          playTripleCounter());
+    }
+  }
+
   return (
     <>
-      <StyledButton
-        onClick={() => {
-          if (!isLoading) {
-            isTripleCounterOneActive ||
-            isTripleCounterTwoActive ||
-            isTripleCounterThreeActive
-              ? (router.push("/success"),
-                stopTripleCounter(),
-                stopTripleCounterMusic(),
-                playGong())
-              : (switchIsTripleCounterOneActive(true),
-                playTripleCounterMusic(),
-                playTripleCounter());
-          }
-        }}
-      >
-        {isLoading ? (
-          "Prepare..."
-        ) : isTripleCounterThreeActive ? (
-          <StyledSpan>
-            <StyledInstruction2>Exhale</StyledInstruction2>
-            {tripleCounterThree}
-          </StyledSpan>
-        ) : isTripleCounterTwoActive ? (
-          <StyledSpan>
-            <StyledInstruction2>Hold breath</StyledInstruction2>
-            {tripleCounterTwo}
-          </StyledSpan>
-        ) : isTripleCounterOneActive ? (
-          <StyledSpan>
-            <StyledInstruction2>Inhale</StyledInstruction2>
-            {tripleCounterOne}
-          </StyledSpan>
-        ) : (
-          "Click and breathe"
-        )}
+      <StyledButton onClick={handleStopTripleCounter}>
+        {isLoading
+          ? "Prepare..."
+          : (isTripleCounterThreeActive && (
+              <StyledSpan>
+                <StyledInstruction2>Exhale</StyledInstruction2>
+                {tripleCounterThree}
+              </StyledSpan>
+            )) ||
+            (isTripleCounterTwoActive && (
+              <StyledSpan>
+                <StyledInstruction2>Hold breath</StyledInstruction2>
+                {tripleCounterTwo}
+              </StyledSpan>
+            )) ||
+            (isTripleCounterOneActive && (
+              <StyledSpan>
+                <StyledInstruction2>Inhale</StyledInstruction2>
+                {tripleCounterOne}
+              </StyledSpan>
+            )) ||
+            "Click and breathe"}
       </StyledButton>
     </>
   );

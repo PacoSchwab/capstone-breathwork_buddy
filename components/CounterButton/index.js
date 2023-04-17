@@ -40,7 +40,7 @@ export default function CounterButton({
           {isLoading ? (
             "Prepare..."
           ) : isBreathActive ? (
-            <StyledSpan firstCounter>
+            <StyledSpan>
               <StyledInstruction>Breathe</StyledInstruction> {breathCount}
             </StyledSpan>
           ) : breathCount === 40 ? (
