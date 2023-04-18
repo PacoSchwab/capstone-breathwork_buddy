@@ -43,6 +43,9 @@ export default function HomePage() {
       <Link href="/info" style={{ fontSize: "3rem" }}>
         Infopage
       </Link>
+      <Link href="/tracking" style={{ fontSize: "3rem" }}>
+        Tracking
+      </Link>
     </>
   );
 }

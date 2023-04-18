@@ -1,10 +1,11 @@
 import CounterSection from "../components/Countersection";
+import { StyledTitle } from "../styles/StyledTitle";
 
 export default function FocusedBreathPage({ breathIntervalDelay }) {
   return (
     <>
       <header>
-        <h1>Focused Breathing</h1>
+        <StyledTitle>Focused Breathing</StyledTitle>
       </header>
       <CounterSection breathIntervalDelay="3500" />
     </>
