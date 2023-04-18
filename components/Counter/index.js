@@ -188,9 +188,7 @@ export default function Counter({ breathIntervalDelay }) {
     handleDecreaseMusicVolume,
   } = useVolumeControl({ audio, music });
 
-  const { displayTime } = useTimeFormatter({
-    retentionCount,
-  });
+  const { displayTime } = useTimeFormatter(retentionCount);
 
   const saveRetentionTime = () => {
     addSavedRetentionCount(retentionCount);

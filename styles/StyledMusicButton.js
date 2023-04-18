@@ -2,9 +2,7 @@ import styled from "styled-components";
 
 export const StyledMusicButton = styled.button`
   color: #454545;
-  /*  box-shadow: 0px 35px 68px 0px rgba(255, 165, 89, 0.5),
-    inset 0px -5px 16px 0px rgba(255, 165, 89, 0.6),
-    inset 0px 11px 28px 0px rgb(255, 255, 255); */
+
   backdrop-filter: blur(3px);
   border: 3px solid #454545;
   border-radius: 25%;
@@ -21,6 +19,9 @@ export const StyledMusicButton = styled.button`
   }
   &:active {
     cursor: url("/cursor-trans-s.png"), auto;
+    box-shadow: 0px 35px 68px 0px rgba(255, 165, 89, 0.5);
+    opacity: 0.8;
+    border: dotted;
   }
   &:disabled {
     color: #454545;
