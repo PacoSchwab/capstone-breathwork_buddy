@@ -83,7 +83,7 @@ export default function InfoSection() {
             lightheadedness.
           </StyledInfoText>
         </section>
-        <StyledInfoImage src="/images/icebath.jpg" alt="ice bath" />
+        <StyledInfoImage src="/images/breathing.jpg" alt="breathing" />
         <section>
           <StyledInfoHeadline>What is 4-7-8 breathing?</StyledInfoHeadline>
           <StyledInfoText>
@@ -179,7 +179,7 @@ export default function InfoSection() {
             <li>Well done! You can now enjoy a cup of tea ^^</li>
           </StyledInfoList>
         </section>
-        <StyledInfoImage src="/images/breathing.jpg" alt="ice bath" />
+        <StyledInfoImage src="/images/icebath.jpg" alt="ice bath" />
       </StyledInfoArticle>
     </>
   );
