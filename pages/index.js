@@ -40,11 +40,14 @@ export default function HomePage() {
           </StyledExerciseButton>
         </StyledExerciseLink>
       </StyledOverviewSection>
-      <Link href="/info" style={{ fontSize: "3rem" }}>
+      <Link href="/info" style={{ fontSize: "2rem" }}>
         Infopage
       </Link>
-      <Link href="/tracking" style={{ fontSize: "3rem" }}>
+      <Link href="/tracking" style={{ fontSize: "2rem" }}>
         Tracking
+      </Link>
+      <Link href="/icebath" style={{ fontSize: "2rem" }}>
+        Ice Bath Counter
       </Link>
     </>
   );
