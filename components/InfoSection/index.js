@@ -9,7 +9,7 @@ export default function InfoSection() {
   return (
     <>
       <StyledInfoArticle>
-        <StyledInfoHeadline>About the breathwork techniques</StyledInfoHeadline>
+        <StyledInfoHeadline>Information & Instructions</StyledInfoHeadline>
         <br></br>
 
         <section>
@@ -37,7 +37,10 @@ export default function InfoSection() {
               these techniques in a dangerous environment such as deep or cold
               water.
             </li>
-            <li>Push the button to start the counter.</li>
+            <li>
+              Select wheter to practise focused or power breathing and push the
+              button to start the counter.
+            </li>
             <li>
               Inhale and exhale profoundly either through your mouth or nose,
               following the pace of the displayed counter and the audio guide.
@@ -80,7 +83,7 @@ export default function InfoSection() {
             lightheadedness.
           </StyledInfoText>
         </section>
-        <StyledInfoImage src="/images/icebath.jpg" alt="ice bath" />
+        <StyledInfoImage src="/images/breathing.jpg" alt="breathing" />
         <section>
           <StyledInfoHeadline>What is 4-7-8 breathing?</StyledInfoHeadline>
           <StyledInfoText>
@@ -114,8 +117,69 @@ export default function InfoSection() {
               pushing the button.
             </li>
           </StyledInfoList>
+          <StyledInfoHeadline>What is ice bathing?</StyledInfoHeadline>
+          <StyledInfoText>
+            Practioners of ice bathing claim the following benefits:
+            <ol>
+              <li>
+                Improved immune function: Exposure to cold temperatures can
+                stimulate the production of white blood cells, which can help
+                the body fight off infections and diseases.
+              </li>
+              <li>
+                Increased energy and alertness: Cold showers can stimulate the
+                release of adrenaline and other hormones, which can increase
+                energy and mental clarity.{" "}
+              </li>
+              <li>
+                Reduced inflammation: Cold exposure has been shown to reduce
+                inflammation in the body, which can help alleviate symptoms of
+                chronic pain and other inflammatory conditions.
+              </li>
+              <li>
+                Improved circulation: Cold water immersion can increase blood
+                flow and circulation, which can help reduce muscle soreness and
+                improve overall health.{" "}
+              </li>
+              <li>
+                Enhanced mood and resilience: Cold exposure has been shown to
+                improve mood and increase resilience to stress, anxiety, and
+                depression.
+              </li>
+            </ol>
+          </StyledInfoText>
+          <StyledInfoList>
+            <StyledInstructionHeadline>Instruction</StyledInstructionHeadline>
+            <li>
+              As with any form of therapy or exercise, it&apos;s important to
+              consult with a healthcare professional before trying cold
+              exposure, especially if you have any underlying health conditions.
+            </li>
+            <li>Push the button to start the counter.</li>
+            <li>
+              A countdown of 10 seconds will start to give you enough time to
+              immerse yourself in cold water. When it reaches 0, the stopwatch
+              will start.
+            </li>
+            <li>
+              You can use a shower, a bath or a bucket of ice water. If you have
+              never tried a cold shower before, start with a warm shower and
+              then turn the water to cold for the last 30 seconds. If you are
+              using a bath, fill it with cold water and sit in it for 90 seconds
+              up to 5 minutes.
+            </li>
+            <li>
+              Do not push yourself to the point of discomfort. If you feel dizzy
+              or nauseous, get out of the water immediately.
+            </li>
+            <li>
+              After the cold exposure, push the button to stop the stopwatch and
+              add the duration to the tracking page.
+            </li>
+            <li>Well done! You can now enjoy a cup of tea ^^</li>
+          </StyledInfoList>
         </section>
-        <StyledInfoImage src="/images/breathing.jpg" alt="ice bath" />
+        <StyledInfoImage src="/images/icebath.jpg" alt="ice bath" />
       </StyledInfoArticle>
     </>
   );

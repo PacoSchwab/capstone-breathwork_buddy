@@ -70,9 +70,6 @@ export default function Counter({ breathIntervalDelay }) {
   const resetBreathCount = useStore((state) => state.resetBreathCount);
   const resetRetentionCount = useStore((state) => state.resetRetentionCount);
   const increaseFlowCounter = useStore((state) => state.increaseFlowCounter);
-  const addSavedRetentionCount = useStore(
-    (state) => state.addSavedRetentionCount
-  );
 
   useClearAudio(
     stopCounter,
@@ -109,11 +106,6 @@ export default function Counter({ breathIntervalDelay }) {
         decreaseBreathHoldCountdown();
       }, 1000);
       addBreathHoldIntervalId(breathHoldInterval);
-    }
-
-    if (savedRetentionCount !== null) {
-      addStoredTime(savedRetentionCount);
-      addSavedRetentionCount(null);
     }
 
     if (breathHoldCountdown === 0) {
@@ -178,7 +170,7 @@ export default function Counter({ breathIntervalDelay }) {
     clearInterval(retentionIntervalId);
     resetRetentionCount();
     switchIsRetentionFinished(true);
-    saveRetentionTime();
+    addStoredTime(retentionCount);
   };
 
   const {
@@ -189,10 +181,6 @@ export default function Counter({ breathIntervalDelay }) {
   } = useVolumeControl({ audio, music });
 
   const { displayTime } = useTimeFormatter(retentionCount);
-
-  const saveRetentionTime = () => {
-    addSavedRetentionCount(retentionCount);
-  };
 
   return (
     <>

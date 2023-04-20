@@ -10,8 +10,12 @@ export const StyledButton = styled.button`
   border-radius: 50%;
   width: 10rem;
   height: 10rem;
-  font-size: ${({ isActive, isRetentionFinished, retention }) =>
-    isActive || isRetentionFinished ? "6rem" : retention ? "3rem" : "2rem"};
+  font-size: ${({ isActive, isRetentionFinished, retention, iceBath }) =>
+    isActive || isRetentionFinished
+      ? "6rem"
+      : retention || iceBath
+      ? "3rem"
+      : "2rem"};
   background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
   margin: 0 2rem;
 

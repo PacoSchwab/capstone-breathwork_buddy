@@ -23,6 +23,11 @@ const useStore = create((set) => ({
   tripleCounterThreeIntervalId: null,
   roundCounter: 1,
   isLoading: true,
+  iceBathCount: 0,
+  iceBathCountIsActive: false,
+  iceBathCountdownIsActive: false,
+  iceBathCountdown: 10,
+  iceBathCountdownIntervalId: null,
   increaseBreathCount: () =>
     set((state) => ({
       breathCount: state.breathCount + 1,
@@ -128,6 +133,38 @@ const useStore = create((set) => ({
   switchIsLoading: (bool) =>
     set(() => ({
       isLoading: bool,
+    })),
+  increaseIceBathCount: () =>
+    set((state) => ({
+      iceBathCount: state.iceBathCount + 1,
+    })),
+  resetIceBathCount: () =>
+    set(() => ({
+      iceBathCount: 0,
+    })),
+  switchIceBathCountIsActive: (bool) =>
+    set(() => ({
+      iceBathCountIsActive: bool,
+    })),
+  addIceBathIntervalId: (id) =>
+    set(() => ({
+      iceBathIntervalId: id,
+    })),
+  switchIceBathCountdownIsActive: (bool) =>
+    set(() => ({
+      iceBathCountdownIsActive: bool,
+    })),
+  decreaseIceBathCountdown: () =>
+    set((state) => ({
+      iceBathCountdown: state.iceBathCountdown - 1,
+    })),
+  addIceBathCountdownIntervalId: (id) =>
+    set(() => ({
+      iceBathCountdownIntervalId: id,
+    })),
+  resetIceBathCountdown: () =>
+    set(() => ({
+      iceBathCountdown: 10,
     })),
 }));
 
