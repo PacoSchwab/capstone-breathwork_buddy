@@ -6,6 +6,9 @@ import {
 } from "victory";
 import useLocalStore from "../useLocalStore";
 import { StyledTitle } from "../../styles/StyledTitle";
+import RetentionTimesList from "../RententionTimesList";
+import IceBathTimesList from "../IceBathTimesList";
+import EditStoredTimeForm from "../EditStoredTimeButton";
 
 export default function TrackingSection() {
   const storedTimes = useLocalStore((state) => state.storedTimes);
@@ -54,7 +57,7 @@ export default function TrackingSection() {
             style={{
               axis: { stroke: "none" },
               ticks: { stroke: "none" },
-              tickLabels: { fontSize: 12 },
+              tickLabels: { fontSize: 13 },
             }}
             domain={[0, 4 * 60]}
             tickValues={Array.from({ length: 17 * 4 }).map((_, i) => i * 15)}
@@ -74,7 +77,8 @@ export default function TrackingSection() {
             }}
           />
         </VictoryChart>
-
+        <RetentionTimesList lastSevenTimes={lastSevenTimes} />
+        <EditStoredTimeForm />
         <StyledTitle>Ice Bath Tracker</StyledTitle>
         <VictoryChart
           domainPadding={{ x: 0, y: 0 }}
@@ -112,7 +116,7 @@ export default function TrackingSection() {
             style={{
               axis: { stroke: "none" },
               ticks: { stroke: "none" },
-              tickLabels: { fontSize: 12 },
+              tickLabels: { fontSize: 13 },
             }}
             domain={[0, 12 * 60]}
             tickValues={Array.from({ length: 17 * 4 }).map((_, i) => i * 60)}
@@ -132,6 +136,7 @@ export default function TrackingSection() {
             }}
           />
         </VictoryChart>
+        <IceBathTimesList lastSevenIceBathTimes={lastSevenIceBathTimes} />
       </div>
     </>
   );

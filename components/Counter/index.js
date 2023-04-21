@@ -104,7 +104,7 @@ export default function Counter({ breathIntervalDelay }) {
       switchShowRetentionCounter(false);
       breathHoldInterval = setInterval(() => {
         decreaseBreathHoldCountdown();
-      }, 1000);
+      }, 100);
       addBreathHoldIntervalId(breathHoldInterval);
     }
 
