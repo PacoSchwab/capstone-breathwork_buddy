@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { v4 as uuidv4 } from "uuid";
 
 const useLocalStore = createLocalStorageStore(
   (set) => ({
@@ -13,6 +14,7 @@ const useLocalStore = createLocalStorageStore(
         storedTimes: [
           ...state.storedTimes,
           {
+            id: uuidv4(),
             date: date,
             time: time,
             retentionCount,
@@ -20,6 +22,17 @@ const useLocalStore = createLocalStorageStore(
         ],
       }));
     },
+    updateStoredTimes: (id, newRetentionCount) =>
+      set((state) => ({
+        storedTimes: state.storedTimes.map((storedTime) =>
+          storedTime.id === id
+            ? {
+                ...storedTime,
+                retentionCount: newRetentionCount,
+              }
+            : storedTime
+        ),
+      })),
     storedIceBathTimes: [],
     addStoredIceBathTime: (iceBathCount) => {
       const now = new Date();

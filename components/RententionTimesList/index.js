@@ -1,38 +1,22 @@
 import useLocalStore from "../useLocalStore";
-import { useState } from "react";
 
-export default function RetentionTimesList({ lastSevenTimes }) {
-  const [entries, setEntries] = useState([lastSevenTimes]);
+export default function RetentionTimesList() {
+  const storedTimes = useLocalStore((state) => state.storedTimes);
+  const updateStoredTimes = useLocalStore((state) => state.updateStoredTimes);
+  const lastSevenTimes = storedTimes.slice(-7);
 
-  const handleEditTimes = (event, lastSevenTimes) => {
+  const handleEditTimes = (event, id) => {
     event.preventDefault();
 
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    console.log("data:", data);
+    const minutes = parseInt(data.editStoredMinutes, 10);
+    const seconds = parseInt(data.editStoredSeconds, 10);
 
-    console.log("lastSevenTimes:", lastSevenTimes);
+    const newRetentionCount = minutes * 60 + seconds;
 
-    setEntries(
-      entries.map((entry) => {
-        const currentEntry = entry.date === lastSevenTimes.date;
-        if (currentEntry) {
-          return {
-            date: lastSevenTimes.date,
-            time: lastSevenTimes.time,
-            retentionCount: `${Math.floor(data.editStoredMinutes / 60)}:${(
-              data.editStoredSeconds % 60
-            )
-              .toString()
-              .padStart(2, "0")}`,
-          };
-        } else {
-          return entry;
-        }
-      })
-    );
-    console.log("entries:", entries);
+    updateStoredTimes(id, newRetentionCount);
   };
 
   return (
@@ -40,13 +24,13 @@ export default function RetentionTimesList({ lastSevenTimes }) {
       <h2>Last seven retention times</h2>
       {lastSevenTimes.map((time) => {
         return (
-          <li key={time.date}>
+          <li key={time.id}>
             {`${time.date}: ${Math.floor(time.retentionCount / 60)}:${(
               time.retentionCount % 60
             )
               .toString()
               .padStart(2, "0")}`}{" "}
-            <form onSubmit={(event) => handleEditTimes(event, time)}>
+            <form onSubmit={(event) => handleEditTimes(event, time.id)}>
               <label htmlFor="editStoredMinutes">edit minutes</label>
               <input
                 id="editStoredMinutes"

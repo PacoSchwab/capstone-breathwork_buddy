@@ -78,7 +78,6 @@ export default function TrackingSection() {
           />
         </VictoryChart>
         <RetentionTimesList lastSevenTimes={lastSevenTimes} />
-        <EditStoredTimeForm />
         <StyledTitle>Ice Bath Tracker</StyledTitle>
         <VictoryChart
           domainPadding={{ x: 0, y: 0 }}

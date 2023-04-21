@@ -22,6 +22,7 @@
     "use-local-storage": "^2.3.6",
     "use-local-storage-state": "^18.3.2",
     "use-sound": "^4.0.1",
+    "uuid": "^9.0.0",
     "victory": "^36.6.8",
     "zustand": "^4.3.7"
   },
