@@ -71,7 +71,7 @@ export default function RetentionTimesList() {
           return (
             <li key={time.id}>
               {`${time.date}: ${Math.floor(time.iceBathCount / 60)}:${(
-                time.iceBathCountCount % 60
+                time.iceBathCount % 60
               )
                 .toString()
                 .padStart(2, "0")}`}{" "}

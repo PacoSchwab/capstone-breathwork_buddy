@@ -4,12 +4,22 @@ import { StyledRoundCounter } from "../styles/StyledRoundCounter";
 import { useEffect } from "react";
 import { useState } from "react";
 import useAudio from "../components/useAudio";
+import useClearTimer from "../components/useClearTimer";
 
 export default function SuccessPage({ breathIntervalDelay }) {
   const router = useRouter();
 
   const { playGong } = useAudio({ breathIntervalDelay });
   const [isGongActive, setIsGongActive] = useState(true);
+
+  useClearTimer(
+    resetIceBathCount,
+    switchIceBathCountIsActive,
+    resetIceBathCountdown,
+    switchIceBathCountdownIsActive,
+    iceBathIntervalId,
+    iceBathCountdownIntervalId
+  );
 
   useEffect(() => {
     if (isGongActive) {

@@ -135,7 +135,6 @@ export default function TrackingSection() {
             }}
           />
         </VictoryChart>
-        <IceBathTimesList lastSevenIceBathTimes={lastSevenIceBathTimes} />
       </div>
     </>
   );
