@@ -20,12 +20,18 @@ export default function IceBathButton({ displayTime, playGong }) {
     (state) => state.switchIceBathCountdownIsActive
   );
   const iceBathCountdown = useStore((state) => state.iceBathCountdown);
+  const iceBathIntervalId = useStore((state) => state.iceBathIntervalId);
+  const resetIceBathCountdown = useStore(
+    (state) => state.resetIceBathCountdown
+  );
 
   function handleIceBathCounterClick() {
     if (iceBathCountIsActive) {
       resetIceBathCount();
+      resetIceBathCountdown();
       addStoredIceBathTime(iceBathCount);
       switchIceBathCountIsActive(false);
+      clearInterval(iceBathIntervalId);
       router.push("/success");
       playGong();
     } else {

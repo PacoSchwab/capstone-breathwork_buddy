@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { v4 as uuidv4 } from "uuid";
 
 const useLocalStore = createLocalStorageStore(
   (set) => ({
@@ -13,13 +14,26 @@ const useLocalStore = createLocalStorageStore(
         storedTimes: [
           ...state.storedTimes,
           {
+            id: uuidv4(),
             date: date,
             time: time,
             retentionCount,
+            isEditingRetentionTime: false,
           },
         ],
       }));
     },
+    updateStoredTimes: (id, newRetentionCount) =>
+      set((state) => ({
+        storedTimes: state.storedTimes.map((storedTime) =>
+          storedTime.id === id
+            ? {
+                ...storedTime,
+                retentionCount: newRetentionCount,
+              }
+            : storedTime
+        ),
+      })),
     storedIceBathTimes: [],
     addStoredIceBathTime: (iceBathCount) => {
       const now = new Date();
@@ -29,13 +43,68 @@ const useLocalStore = createLocalStorageStore(
         storedIceBathTimes: [
           ...state.storedIceBathTimes,
           {
+            id: uuidv4(),
             date: date,
             time: time,
             iceBathCount,
+            isEditingIceBathTime: false,
           },
         ],
       }));
     },
+    updateStoredIceBathTimes: (id, newIceBathCount) =>
+      set((state) => ({
+        storedIceBathTimes: state.storedIceBathTimes.map((storedIceBathTime) =>
+          storedIceBathTime.id === id
+            ? {
+                ...storedIceBathTime,
+                iceBathCount: newIceBathCount,
+              }
+            : storedIceBathTime
+        ),
+      })),
+    toggleIsEditingRetentionTime: (id) =>
+      set((state) => ({
+        storedTimes: state.storedTimes.map((storedTime) =>
+          storedTime.id === id
+            ? {
+                ...storedTime,
+                isEditingRetentionTime: !storedTime.isEditingRetentionTime,
+              }
+            : storedTime
+        ),
+      })),
+    resetIsEditingRetentionTime: () =>
+      set((state) => ({
+        storedTimes: state.storedTimes.map((storedTime) => {
+          return {
+            ...storedTime,
+            isEditingRetentionTime: false,
+          };
+        }),
+      })),
+    toggleIsEditingIceBathTime: (id) =>
+      set((state) => ({
+        storedIceBathTimes: state.storedIceBathTimes.map((storedIceBathTime) =>
+          storedIceBathTime.id === id
+            ? {
+                ...storedIceBathTime,
+                isEditingIceBathTime: !storedIceBathTime.isEditingIceBathTime,
+              }
+            : storedIceBathTime
+        ),
+      })),
+    resetIsEditingIceBathTime: () =>
+      set((state) => ({
+        storedIceBathTimes: state.storedIceBathTimes.map(
+          (storedIceBathTime) => {
+            return {
+              ...storedIceBathTime,
+              isEditingIceBathTime: false,
+            };
+          }
+        ),
+      })),
   }),
   "storedTimes"
 );
