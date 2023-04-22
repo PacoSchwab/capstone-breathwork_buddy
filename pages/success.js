@@ -5,8 +5,24 @@ import { useEffect } from "react";
 import { useState } from "react";
 import useAudio from "../components/useAudio";
 import useClearTimer from "../components/useClearTimer";
+import useStore from "../components/useStore";
 
 export default function SuccessPage({ breathIntervalDelay }) {
+  const resetIceBathCountdown = useStore(
+    (state) => state.resetIceBathCountdown
+  );
+  const switchIceBathCountdownIsActive = useStore(
+    (state) => state.switchIceBathCountdownIsActive
+  );
+  const iceBathCountdownIntervalId = useStore(
+    (state) => state.iceBathCountdownIntervalId
+  );
+  const resetIceBathCount = useStore((state) => state.resetIceBathCount);
+  const switchIceBathCountIsActive = useStore(
+    (state) => state.switchIceBathCountIsActive
+  );
+  const iceBathIntervalId = useStore((state) => state.iceBathIntervalId);
+
   const router = useRouter();
 
   const { playGong } = useAudio({ breathIntervalDelay });
