@@ -1,5 +1,7 @@
 import useLocalStore from "../useLocalStore";
 import useClearEditing from "../useClearEditing";
+import { StyledEditButton } from "../../styles/StyledEditButton";
+import { StyledTrackingList } from "../../styles/StyledTrackingList";
 
 export default function IceBathTimesList() {
   const storedIceBathTimes = useLocalStore((state) => state.storedIceBathTimes);
@@ -32,7 +34,7 @@ export default function IceBathTimesList() {
 
   return (
     <>
-      <ul>
+      <StyledTrackingList>
         {lastSevenIceBathTimes.map((time) => {
           return (
             <li key={time.id}>
@@ -41,9 +43,11 @@ export default function IceBathTimesList() {
               )
                 .toString()
                 .padStart(2, "0")}`}{" "}
-              <button onClick={() => toggleIsEditingIceBathTime(time.id)}>
+              <StyledEditButton
+                onClick={() => toggleIsEditingIceBathTime(time.id)}
+              >
                 {time.isEditingIceBathTime ? "Cancel" : "Edit"}
-              </button>
+              </StyledEditButton>
               {time.isEditingIceBathTime && (
                 <form
                   onSubmit={(event) => handleEditIceBathTimes(event, time.id)}
@@ -68,13 +72,13 @@ export default function IceBathTimesList() {
                     placeholder="seconds"
                     required
                   />
-                  <button type="submit">Submit</button>
+                  <StyledEditButton type="submit">Submit</StyledEditButton>
                 </form>
               )}
             </li>
           );
         })}
-      </ul>
+      </StyledTrackingList>
     </>
   );
 }

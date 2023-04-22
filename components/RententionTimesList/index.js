@@ -1,5 +1,8 @@
 import useLocalStore from "../useLocalStore";
 import useClearEditing from "../useClearEditing";
+import { StyledEditButton } from "../../styles/StyledEditButton";
+import { StyledTrackingList } from "../../styles/StyledTrackingList";
+import { StyledInputField } from "../../styles/StyledInputField";
 
 export default function RetentionTimesList() {
   const storedTimes = useLocalStore((state) => state.storedTimes);
@@ -30,7 +33,7 @@ export default function RetentionTimesList() {
 
   return (
     <>
-      <ul>
+      <StyledTrackingList>
         {lastSevenTimes.map((time) => {
           return (
             <li key={time.id}>
@@ -39,40 +42,42 @@ export default function RetentionTimesList() {
               )
                 .toString()
                 .padStart(2, "0")}`}{" "}
-              <button onClick={() => toggleIsEditingRetentionTime(time.id)}>
+              <StyledEditButton
+                onClick={() => toggleIsEditingRetentionTime(time.id)}
+              >
                 {time.isEditingRetentionTime ? "Cancel" : "Edit"}
-              </button>
+              </StyledEditButton>
               {time.isEditingRetentionTime && (
                 <form
                   onSubmit={(event) => handleEditRetentionTimes(event, time.id)}
                 >
-                  <label htmlFor="editStoredMinutes">edit minutes</label>
-                  <input
+                  <label htmlFor="editStoredMinutes">minutes</label>
+                  <StyledInputField
                     id="editStoredMinutes"
                     type="number"
                     name="editStoredMinutes"
                     min={0}
                     max={3}
-                    placeholder="minutes"
+                    placeholder="mm"
                     required
                   />
-                  <label htmlFor="editStoredSeconds">edit seconds</label>
-                  <input
+                  <label htmlFor="editStoredSeconds">seconds</label>
+                  <StyledInputField
                     id="editStoredSeconds"
                     type="number"
                     name="editStoredSeconds"
                     min={0}
                     max={59}
-                    placeholder="seconds"
+                    placeholder="ss"
                     required
                   />
-                  <button type="submit">Submit</button>
+                  <StyledEditButton type="submit">Confirm</StyledEditButton>
                 </form>
               )}
             </li>
           );
         })}
-      </ul>
+      </StyledTrackingList>
     </>
   );
 }

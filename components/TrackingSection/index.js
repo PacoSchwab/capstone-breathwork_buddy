@@ -56,7 +56,7 @@ export default function TrackingSection() {
             style={{
               axis: { stroke: "none" },
               ticks: { stroke: "none" },
-              tickLabels: { fontSize: 13 },
+              tickLabels: { fontSize: 13, fontWeight: "bold" },
             }}
             domain={[0, 4 * 60]}
             tickValues={Array.from({ length: 17 * 4 }).map((_, i) => i * 15)}
@@ -114,7 +114,7 @@ export default function TrackingSection() {
             style={{
               axis: { stroke: "none" },
               ticks: { stroke: "none" },
-              tickLabels: { fontSize: 13 },
+              tickLabels: { fontSize: 13, fontWeight: "bold" },
             }}
             domain={[0, 12 * 60]}
             tickValues={Array.from({ length: 17 * 4 }).map((_, i) => i * 60)}
