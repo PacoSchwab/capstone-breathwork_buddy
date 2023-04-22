@@ -42,6 +42,7 @@ const useLocalStore = createLocalStorageStore(
         storedIceBathTimes: [
           ...state.storedIceBathTimes,
           {
+            id: uuidv4(),
             date: date,
             time: time,
             iceBathCount,
@@ -49,6 +50,17 @@ const useLocalStore = createLocalStorageStore(
         ],
       }));
     },
+    updateStoredIceBathTimes: (id, newIceBathCount) =>
+      set((state) => ({
+        storedIceBathTimes: state.storedIceBathTimes.map((storedIceBathTime) =>
+          storedIceBathTime.id === id
+            ? {
+                ...storedIceBathTime,
+                iceBathCount: newIceBathCount,
+              }
+            : storedIceBathTime
+        ),
+      })),
   }),
   "storedTimes"
 );
