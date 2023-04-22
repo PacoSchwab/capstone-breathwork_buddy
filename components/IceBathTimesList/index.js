@@ -2,6 +2,7 @@ import useLocalStore from "../useLocalStore";
 import useClearEditing from "../useClearEditing";
 import { StyledEditButton } from "../../styles/StyledEditButton";
 import { StyledTrackingList } from "../../styles/StyledTrackingList";
+import { StyledInputField } from "../../styles/StyledInputField";
 
 export default function IceBathTimesList() {
   const storedIceBathTimes = useLocalStore((state) => state.storedIceBathTimes);
@@ -52,27 +53,27 @@ export default function IceBathTimesList() {
                 <form
                   onSubmit={(event) => handleEditIceBathTimes(event, time.id)}
                 >
-                  <label htmlFor="editStoredMinutes">edit minutes</label>
-                  <input
+                  <label htmlFor="editStoredMinutes">minutes</label>
+                  <StyledInputField
                     id="editStoredMinutes"
                     type="number"
                     name="editStoredMinutes"
                     min={0}
                     max={11}
-                    placeholder="minutes"
+                    placeholder="mm"
                     required
                   />
-                  <label htmlFor="editStoredSeconds">edit seconds</label>
-                  <input
+                  <label htmlFor="editStoredSeconds">seconds</label>
+                  <StyledInputField
                     id="editStoredSeconds"
                     type="number"
                     name="editStoredSeconds"
                     min={0}
                     max={59}
-                    placeholder="seconds"
+                    placeholder="ss"
                     required
                   />
-                  <StyledEditButton type="submit">Submit</StyledEditButton>
+                  <StyledEditButton type="submit">Confirm</StyledEditButton>
                 </form>
               )}
             </li>
