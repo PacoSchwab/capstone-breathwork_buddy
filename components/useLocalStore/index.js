@@ -61,6 +61,11 @@ const useLocalStore = createLocalStorageStore(
             : storedIceBathTime
         ),
       })),
+    isEditingRetentionTime: false,
+    toggleIsEditingRetentionTime: (isEditingRetentionTime) =>
+      set((state) => ({
+        isEditingRetentionTime: !state.isEditingRetentionTime,
+      })),
   }),
   "storedTimes"
 );

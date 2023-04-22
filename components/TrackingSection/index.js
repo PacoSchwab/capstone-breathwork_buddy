@@ -8,7 +8,6 @@ import useLocalStore from "../useLocalStore";
 import { StyledTitle } from "../../styles/StyledTitle";
 import RetentionTimesList from "../RententionTimesList";
 import IceBathTimesList from "../IceBathTimesList";
-import EditStoredTimeForm from "../EditStoredTimeButton";
 
 export default function TrackingSection() {
   const storedTimes = useLocalStore((state) => state.storedTimes);
@@ -135,6 +134,7 @@ export default function TrackingSection() {
             }}
           />
         </VictoryChart>
+        <IceBathTimesList lastSevenIceBathTimes={lastSevenIceBathTimes} />
       </div>
     </>
   );

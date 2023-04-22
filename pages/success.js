@@ -30,9 +30,8 @@ export default function SuccessPage({ breathIntervalDelay }) {
 
   useClearTimer(
     resetIceBathCount,
-    switchIceBathCountIsActive,
+    switchIceBathCountIsActive(false),
     resetIceBathCountdown,
-    switchIceBathCountdownIsActive,
     iceBathIntervalId,
     iceBathCountdownIntervalId
   );
