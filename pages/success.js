@@ -4,7 +4,6 @@ import { StyledRoundCounter } from "../styles/StyledRoundCounter";
 import { useEffect } from "react";
 import { useState } from "react";
 import useAudio from "../components/useAudio";
-import useClearTimer from "../components/useClearTimer";
 import useStore from "../components/useStore";
 
 export default function SuccessPage({ breathIntervalDelay }) {
@@ -27,14 +26,6 @@ export default function SuccessPage({ breathIntervalDelay }) {
 
   const { playGong } = useAudio({ breathIntervalDelay });
   const [isGongActive, setIsGongActive] = useState(true);
-
-  useClearTimer(
-    resetIceBathCount,
-    switchIceBathCountIsActive(false),
-    resetIceBathCountdown,
-    iceBathIntervalId,
-    iceBathCountdownIntervalId
-  );
 
   useEffect(() => {
     if (isGongActive) {

@@ -18,6 +18,7 @@ const useLocalStore = createLocalStorageStore(
             date: date,
             time: time,
             retentionCount,
+            isEditingRetentionTime: false,
           },
         ],
       }));
@@ -46,6 +47,7 @@ const useLocalStore = createLocalStorageStore(
             date: date,
             time: time,
             iceBathCount,
+            isEditingIceBathTime: false,
           },
         ],
       }));
@@ -61,10 +63,47 @@ const useLocalStore = createLocalStorageStore(
             : storedIceBathTime
         ),
       })),
-    isEditingRetentionTime: false,
-    toggleIsEditingRetentionTime: (isEditingRetentionTime) =>
+    toggleIsEditingRetentionTime: (id) =>
       set((state) => ({
-        isEditingRetentionTime: !state.isEditingRetentionTime,
+        storedTimes: state.storedTimes.map((storedTime) =>
+          storedTime.id === id
+            ? {
+                ...storedTime,
+                isEditingRetentionTime: !storedTime.isEditingRetentionTime,
+              }
+            : storedTime
+        ),
+      })),
+    resetIsEditingRetentionTime: () =>
+      set((state) => ({
+        storedTimes: state.storedTimes.map((storedTime) => {
+          return {
+            ...storedTime,
+            isEditingRetentionTime: false,
+          };
+        }),
+      })),
+    toggleIsEditingIceBathTime: (id) =>
+      set((state) => ({
+        storedIceBathTimes: state.storedIceBathTimes.map((storedIceBathTime) =>
+          storedIceBathTime.id === id
+            ? {
+                ...storedIceBathTime,
+                isEditingIceBathTime: !storedIceBathTime.isEditingIceBathTime,
+              }
+            : storedIceBathTime
+        ),
+      })),
+    resetIsEditingIceBathTime: () =>
+      set((state) => ({
+        storedIceBathTimes: state.storedIceBathTimes.map(
+          (storedIceBathTime) => {
+            return {
+              ...storedIceBathTime,
+              isEditingIceBathTime: false,
+            };
+          }
+        ),
       })),
   }),
   "storedTimes"
