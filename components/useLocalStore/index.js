@@ -105,6 +105,20 @@ const useLocalStore = createLocalStorageStore(
           }
         ),
       })),
+    deleteStoredTime: (id) =>
+      set((state) => ({
+        storedTimes: state.storedTimes.filter((storedTime) => {
+          return storedTime.id !== id;
+        }),
+      })),
+    deleteStoredIceBathTime: (id) =>
+      set((state) => ({
+        storedIceBathTimes: state.storedIceBathTimes.filter(
+          (storedIceBathTime) => {
+            return storedIceBathTime.id !== id;
+          }
+        ),
+      })),
   }),
   "storedTimes"
 );

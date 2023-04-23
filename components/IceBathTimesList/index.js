@@ -15,6 +15,9 @@ export default function IceBathTimesList() {
   const resetIsEditingIceBathTime = useLocalStore(
     (state) => state.resetIsEditingIceBathTime
   );
+  const deleteStoredIceBathTime = useLocalStore(
+    (state) => state.deleteStoredIceBathTime
+  );
   const lastSevenIceBathTimes = storedIceBathTimes.slice(-7);
 
   const handleEditIceBathTimes = (event, id) => {
@@ -29,6 +32,10 @@ export default function IceBathTimesList() {
     const newCount = minutes * 60 + seconds;
 
     updateStoredIceBathTimes(id, newCount);
+  };
+
+  const handleDeleteIceBathTimes = (id) => {
+    window.confirm("Are you sure?") && deleteStoredIceBathTime(id);
   };
 
   useClearEditing(resetIsEditingIceBathTime);
@@ -76,6 +83,11 @@ export default function IceBathTimesList() {
                   <StyledEditButton type="submit">Confirm</StyledEditButton>
                 </form>
               )}
+              <StyledEditButton
+                onClick={() => handleDeleteIceBathTimes(time.id)}
+              >
+                Delete
+              </StyledEditButton>
             </li>
           );
         })}

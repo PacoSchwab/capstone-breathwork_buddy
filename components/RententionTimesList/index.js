@@ -13,6 +13,7 @@ export default function RetentionTimesList() {
   const resetIsEditingRetentionTime = useLocalStore(
     (state) => state.resetIsEditingRetentionTime
   );
+  const deleteStoredTime = useLocalStore((state) => state.deleteStoredTime);
   const lastSevenTimes = storedTimes.slice(-7);
 
   const handleEditRetentionTimes = (event, id) => {
@@ -27,6 +28,10 @@ export default function RetentionTimesList() {
     const newCount = minutes * 60 + seconds;
 
     updateStoredTimes(id, newCount);
+  };
+
+  const handleDeleteRetentionTimes = (id) => {
+    window.confirm("Are you sure?") && deleteStoredTime(id);
   };
 
   useClearEditing(resetIsEditingRetentionTime);
@@ -74,6 +79,11 @@ export default function RetentionTimesList() {
                   <StyledEditButton type="submit">Confirm</StyledEditButton>
                 </form>
               )}
+              <StyledEditButton
+                onClick={() => handleDeleteRetentionTimes(time.id)}
+              >
+                Delete
+              </StyledEditButton>
             </li>
           );
         })}
