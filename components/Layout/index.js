@@ -6,7 +6,6 @@ const StyledMain = styled.main`
   justify-content: center;
   align-items: center;
   gap: 4rem;
-  /* height: 100vh; */
   max-width: 1200px;
   margin: 0 auto;
 `;

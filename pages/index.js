@@ -10,13 +10,13 @@ export default function HomePage() {
     <>
       <h1>Breathwork Buddy</h1>
       <StyledOverviewSection>
-        <StyledExerciseLink href="/focusedbreathing">
+        <StyledExerciseLink href="/breathingflows">
           <StyledExerciseButton>
             <StyledExerciseBackground
               src="/images/purplesmoke.png"
               alt="Focused Breathing"
             />
-            <StyledExerciseLinkText>Focused Breathing</StyledExerciseLinkText>
+            <StyledExerciseLinkText>Breathing Flows</StyledExerciseLinkText>
           </StyledExerciseButton>
         </StyledExerciseLink>
 
@@ -30,13 +30,13 @@ export default function HomePage() {
           </StyledExerciseButton>
         </StyledExerciseLink>
 
-        <StyledExerciseLink href="/powerbreathing">
+        <StyledExerciseLink href="/icebathing">
           <StyledExerciseButton>
             <StyledExerciseBackground
               src="/images/purplesmoke.png"
               alt="Power Breathing"
             />
-            <StyledExerciseLinkText>Power Breathing</StyledExerciseLinkText>
+            <StyledExerciseLinkText>Ice Bathing</StyledExerciseLinkText>
           </StyledExerciseButton>
         </StyledExerciseLink>
       </StyledOverviewSection>

@@ -7,6 +7,8 @@ import useClearTimer from "../useClearTimer";
 import { StyledCounterSection } from "../../styles/StyledCounterSection";
 import IceBathButton from "../IceBathButton";
 import useTimeFormatter from "../useTimeFormatter";
+import { StyledRoundContainer } from "../../styles/StyledRoundContainer";
+import { StyledSubHeadline } from "../../styles/StyledSubHeadline";
 
 export default function IceBathCounter({ breathIntervalDelay }) {
   const iceBathCount = useStore((state) => state.iceBathCount);
@@ -98,6 +100,9 @@ export default function IceBathCounter({ breathIntervalDelay }) {
           router={router}
         />
       </StyledCounterSection>
+      <StyledRoundContainer iceBathing>
+        <StyledSubHeadline>Ice Bathing</StyledSubHeadline>
+      </StyledRoundContainer>
     </>
   );
 }

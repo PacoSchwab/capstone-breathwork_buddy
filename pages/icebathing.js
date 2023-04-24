@@ -5,7 +5,7 @@ export default function IceBathPage() {
   return (
     <>
       <header>
-        <StyledTitle>Ice Bath Counter</StyledTitle>
+        <StyledTitle>Breathwork Buddy</StyledTitle>
       </header>
       <IceBathCounterSection />
     </>

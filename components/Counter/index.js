@@ -12,6 +12,8 @@ import AudioControl from "../AudioControl";
 import MusicControl from "../MusicControl";
 import FlowCounter from "../FlowCounter";
 import CounterButton from "../CounterButton";
+import ToggleBreathmodeButton from "../ToggleBreathmodeButton";
+import { StyledRoundContainer } from "../../styles/StyledRoundContainer";
 
 export default function Counter({ breathIntervalDelay }) {
   const router = useRouter();
@@ -206,7 +208,13 @@ export default function Counter({ breathIntervalDelay }) {
           handleDecreaseMusicVolume={handleDecreaseMusicVolume}
         />
       </StyledCounterSection>
-      <FlowCounter />
+      <StyledRoundContainer>
+        <ToggleBreathmodeButton
+          breathIntervalDelay={breathIntervalDelay}
+          isBreathActive={isBreathActive}
+        />
+        <FlowCounter />
+      </StyledRoundContainer>
     </>
   );
 }
