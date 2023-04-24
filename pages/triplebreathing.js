@@ -5,7 +5,7 @@ export default function TripleBreathingPage() {
   return (
     <>
       <header>
-        <StyledTitle>4-7-8-Breathing</StyledTitle>
+        <StyledTitle>Breathwork Buddy</StyledTitle>
       </header>
       <TripleCounterSection />
     </>

@@ -28,6 +28,7 @@ const useStore = create((set) => ({
   iceBathCountdownIsActive: false,
   iceBathCountdown: 10,
   iceBathCountdownIntervalId: null,
+  isPowerBreathing: false,
   increaseBreathCount: () =>
     set((state) => ({
       breathCount: state.breathCount + 1,
@@ -165,6 +166,10 @@ const useStore = create((set) => ({
   resetIceBathCountdown: () =>
     set(() => ({
       iceBathCountdown: 10,
+    })),
+  switchIsPowerBreathing: (state) =>
+    set((state) => ({
+      isPowerBreathing: !state.isPowerBreathing,
     })),
 }));
 

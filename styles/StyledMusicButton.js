@@ -4,7 +4,7 @@ export const StyledMusicButton = styled.button`
   color: #454545;
 
   backdrop-filter: blur(3px);
-  border: 3px solid #454545;
+  border: 3px solid #454545 outset;
   border-radius: 25%;
   width: 4rem;
   height: 4rem;

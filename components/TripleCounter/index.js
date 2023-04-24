@@ -9,6 +9,8 @@ import AudioControl from "../AudioControl";
 import MusicControl from "../MusicControl";
 import useStore from "../useStore";
 import TripleCounterButton from "../TripleCounterButton";
+import { StyledRoundContainer } from "../../styles/StyledRoundContainer";
+import { StyledSubHeadline } from "../../styles/StyledSubHeadline";
 
 export default function TripleCounter({ breathIntervalDelay }) {
   const router = useRouter();
@@ -177,7 +179,10 @@ export default function TripleCounter({ breathIntervalDelay }) {
           handleDecreaseMusicVolume={handleDecreaseMusicVolume}
         />
       </StyledCounterSection>
-      <StyledRoundCounter>Round {roundCounter}</StyledRoundCounter>
+      <StyledRoundContainer>
+        <StyledSubHeadline>4-7-8-Breathing</StyledSubHeadline>
+        <StyledRoundCounter>Round {roundCounter}</StyledRoundCounter>
+      </StyledRoundContainer>
     </>
   );
 }

@@ -5,9 +5,9 @@ export default function FocusedBreathPage({ breathIntervalDelay }) {
   return (
     <>
       <header>
-        <StyledTitle>Focused Breathing</StyledTitle>
+        <StyledTitle>Breathwork Buddy</StyledTitle>
       </header>
-      <CounterSection breathIntervalDelay="3500" />
+      <CounterSection breathIntervalDelay={breathIntervalDelay} />
     </>
   );
 }
