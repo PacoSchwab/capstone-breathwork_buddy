@@ -1,7 +1,7 @@
 import CounterSection from "../components/Countersection";
 import { StyledTitle } from "../styles/StyledTitle";
 
-export default function FocusedBreathPage({ breathIntervalDelay }) {
+export default function BreathFlowsPage({ breathIntervalDelay }) {
   return (
     <>
       <header>

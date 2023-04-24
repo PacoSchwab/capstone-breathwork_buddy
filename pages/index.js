@@ -3,20 +3,20 @@ import { StyledExerciseButton } from "../styles/StyledExerciseButton";
 import { StyledExerciseLinkText } from "../styles/StyledExerciseLinkText";
 import { StyledOverviewSection } from "../styles/StyledOverviewSection";
 import { StyledExerciseLink } from "../styles/StyledExerciseLink";
-import Link from "next/link";
+import { StyledTitle } from "../styles/StyledTitle";
 
 export default function HomePage() {
   return (
     <>
-      <h1>Breathwork Buddy</h1>
+      <StyledTitle>Breathwork Buddy</StyledTitle>
       <StyledOverviewSection>
-        <StyledExerciseLink href="/breathingflows">
+        <StyledExerciseLink href="/breathflows">
           <StyledExerciseButton>
             <StyledExerciseBackground
               src="/images/purplesmoke.png"
-              alt="Focused Breathing"
+              alt="Breath Flows"
             />
-            <StyledExerciseLinkText>Breathing Flows</StyledExerciseLinkText>
+            <StyledExerciseLinkText>Breath Flows</StyledExerciseLinkText>
           </StyledExerciseButton>
         </StyledExerciseLink>
 
@@ -34,21 +34,12 @@ export default function HomePage() {
           <StyledExerciseButton>
             <StyledExerciseBackground
               src="/images/purplesmoke.png"
-              alt="Power Breathing"
+              alt="Ice Bathing"
             />
             <StyledExerciseLinkText>Ice Bathing</StyledExerciseLinkText>
           </StyledExerciseButton>
         </StyledExerciseLink>
       </StyledOverviewSection>
-      <Link href="/info" style={{ fontSize: "2rem" }}>
-        Infopage
-      </Link>
-      <Link href="/tracking" style={{ fontSize: "2rem" }}>
-        Tracking
-      </Link>
-      <Link href="/icebath" style={{ fontSize: "2rem" }}>
-        Ice Bath Counter
-      </Link>
     </>
   );
 }

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledToggleButton = styled.button`
   color: #454545;
   font-size: 1.5rem;
-  padding: 0 1rem;
+  padding: 0.2rem 1rem;
   backdrop-filter: blur(3px);
   border: ${({ disabled }) => (disabled ? "none" : "3px solid #454545 outset")};
   border-radius: 25%;
