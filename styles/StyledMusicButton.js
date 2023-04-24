@@ -15,10 +15,10 @@ export const StyledMusicButton = styled.button`
     font-size: 5rem;
   }
   &:hover {
-    cursor: url("/cursor-blur-s.png"), auto;
+    cursor: url("/images/cursor-blur-s.png"), auto;
   }
   &:active {
-    cursor: url("/cursor-trans-s.png"), auto;
+    cursor: url("/images/cursor-trans-s.png"), auto;
     box-shadow: 0px 35px 68px 0px rgba(255, 165, 89, 0.5);
     opacity: 0.8;
     border: dotted;
