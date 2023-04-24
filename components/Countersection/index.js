@@ -1,7 +1,7 @@
 import Counter from "../Counter";
 import useStore from "../useStore";
 
-export default function CounterSection({ breathIntervalDelay }) {
+export default function CounterSection() {
   const isPowerBreathing = useStore((state) => state.isPowerBreathing);
 
   return (
