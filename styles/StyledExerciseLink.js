@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const StyledExerciseLink = styled.a`
   align-self: ${({ second }) => (second ? "flex-start" : "none")};

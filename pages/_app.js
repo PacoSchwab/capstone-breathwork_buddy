@@ -1,5 +1,6 @@
 import Layout from "../components/Layout";
 import GlobalStyle from "../styles";
+import FabMenu from "../components/FabMenu";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -8,6 +9,7 @@ export default function App({ Component, pageProps }) {
       <Layout>
         <Component {...pageProps} />
       </Layout>
+      <FabMenu />
     </>
   );
 }

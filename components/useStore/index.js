@@ -29,6 +29,7 @@ const useStore = create((set) => ({
   iceBathCountdown: 10,
   iceBathCountdownIntervalId: null,
   isPowerBreathing: false,
+  isMenuOpen: false,
   increaseBreathCount: () =>
     set((state) => ({
       breathCount: state.breathCount + 1,
@@ -167,9 +168,13 @@ const useStore = create((set) => ({
     set(() => ({
       iceBathCountdown: 10,
     })),
-  switchIsPowerBreathing: (state) =>
+  switchIsPowerBreathing: () =>
     set((state) => ({
       isPowerBreathing: !state.isPowerBreathing,
+    })),
+  switchIsMenuOpen: () =>
+    set((state) => ({
+      isMenuOpen: !state.isMenuOpen,
     })),
 }));
 
