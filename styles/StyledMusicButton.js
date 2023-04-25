@@ -8,7 +8,7 @@ export const StyledMusicButton = styled.button`
   border-radius: 25%;
   width: 4rem;
   height: 4rem;
-  font-size: 1rem;
+  font: var(--font-body2);
   background-color: ${({ decrease }) => (decrease ? "#FFA559" : "#FF6000")};
 
   &:visited {

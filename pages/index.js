@@ -3,12 +3,11 @@ import { StyledExerciseButton } from "../styles/StyledExerciseButton";
 import { StyledExerciseLinkText } from "../styles/StyledExerciseLinkText";
 import { StyledOverviewSection } from "../styles/StyledOverviewSection";
 import { StyledExerciseLink } from "../styles/StyledExerciseLink";
-import { StyledTitle } from "../styles/StyledTitle";
+import { StyledHeader } from "../styles/StyledHeader";
 
 export default function HomePage() {
   return (
     <>
-      <StyledTitle>Breathwork Buddy</StyledTitle>
       <StyledOverviewSection>
         <StyledExerciseLink href="/breathflows">
           <StyledExerciseButton>

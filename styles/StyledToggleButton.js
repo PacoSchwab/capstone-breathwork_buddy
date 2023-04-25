@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const StyledToggleButton = styled.button`
   color: #454545;
-  font-size: 1.5rem;
   padding: 0.2rem 1rem;
   backdrop-filter: blur(3px);
   border: ${({ disabled }) => (disabled ? "none" : "3px solid #454545 outset")};
@@ -14,4 +13,5 @@ export const StyledToggleButton = styled.button`
   background-image: ${({ disabled }) =>
     disabled ? "none" : "linear-gradient(120deg, #ffa559 0%, #ffe6c7 100%)"};
   margin: 0 0.5rem;
+  width: 19rem;
 `;

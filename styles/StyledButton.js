@@ -10,6 +10,7 @@ export const StyledButton = styled.button`
   border-radius: 50%;
   width: 10rem;
   height: 10rem;
+  font: var(--font-body1);
   font-size: ${({ isActive, isRetentionFinished, retention, iceBath }) =>
     isActive || isRetentionFinished
       ? "6rem"

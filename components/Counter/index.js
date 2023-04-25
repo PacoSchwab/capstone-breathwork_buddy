@@ -42,7 +42,6 @@ export default function Counter({ breathIntervalDelay }) {
   const retentionIntervalId = useStore((state) => state.retentionIntervalId);
   const isRetentionFinished = useStore((state) => state.isRetentionFinished);
   const breathHoldCountdown = useStore((state) => state.breathHoldCountdown);
-  const breathHoldIntervalId = useStore((state) => state.breathHoldIntervalId);
   const flowCounter = useStore((state) => state.flowCounter);
   const savedRetentionCount = useStore((state) => state.savedRetentionCount);
   const increaseBreathCount = useStore((state) => state.increaseBreathCount);

@@ -7,5 +7,5 @@ export const StyledOverviewSection = styled.section`
   align-items: center;
   min-height: 80vh;
   width: 100%;
-  margin: 0 auto;
+  margin-top: 3rem;
 `;
