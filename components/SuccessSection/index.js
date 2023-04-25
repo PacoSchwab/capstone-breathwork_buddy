@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { StyledButton } from "../../styles/StyledButton";
-import { StyledRoundCounter } from "../../styles/StyledRoundCounter";
 import { useEffect, useState } from "react";
 import useAudio from "../useAudio";
 import useStore from "../useStore";
@@ -29,13 +28,7 @@ export default function SuccessSection({ breathIntervalDelay }) {
   const [isGongActive, setIsGongActive] = useState(true);
 
   useEffect(() => {
-    if (isGongActive) {
-      playGong();
-    }
-  }, [isGongActive]);
-
-  useEffect(() => {
-    setIsGongActive(true);
+    playGong();
   }, []);
 
   return (
