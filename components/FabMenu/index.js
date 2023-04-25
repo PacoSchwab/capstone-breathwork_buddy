@@ -24,7 +24,6 @@ export default function FabMenu() {
         <StyledFabUl>
           <Link href="/">
             <StyledFabLi>
-              {" "}
               <Image
                 src="/images/lungs.svg"
                 height={45}
@@ -35,7 +34,6 @@ export default function FabMenu() {
           </Link>
           <Link href="/tracking">
             <StyledFabLi>
-              {" "}
               <Image
                 src="/images/stopwatch.svg"
                 height={45}
@@ -46,7 +44,6 @@ export default function FabMenu() {
           </Link>
           <Link href="/info">
             <StyledFabLi>
-              {" "}
               <Image
                 src="/images/info.svg"
                 height={45}
