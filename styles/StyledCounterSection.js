@@ -4,5 +4,6 @@ export const StyledCounterSection = styled.section`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 3rem;
+  margin-top: 6rem;
+  margin-bottom: 3rem;
 `;
