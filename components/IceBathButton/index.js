@@ -43,8 +43,7 @@ export default function IceBathButton({ displayTime, playGong }) {
       <StyledButton iceBath onClick={handleIceBathCounterClick}>
         {iceBathCount === 0 ? (
           <StyledSpan>
-            <StyledInstruction>Into the cold</StyledInstruction>{" "}
-            {iceBathCountdown}
+            <StyledInstruction>Get in</StyledInstruction> {iceBathCountdown}
           </StyledSpan>
         ) : (
           displayTime

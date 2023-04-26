@@ -1,6 +1,7 @@
 import useStore from "../useStore";
 import { StyledToggleButton } from "../../styles/StyledToggleButton";
 import { StyledClickToSwitch } from "../../styles/StyledClickToSwitch";
+import { StyledSubHeadline } from "../../styles/StyledSubHeadline";
 
 export default function ToggleBreathmodeButton() {
   const isPowerBreathing = useStore((state) => state.isPowerBreathing);
@@ -19,7 +20,9 @@ export default function ToggleBreathmodeButton() {
       {!isBreathActive && (
         <StyledClickToSwitch>Click to Switch</StyledClickToSwitch>
       )}
-      {isPowerBreathing ? "Power Breathing" : "Focused Breathing"}
+      <StyledSubHeadline>
+        {isPowerBreathing ? "Power Breathing" : "Focus Breathing"}
+      </StyledSubHeadline>
     </StyledToggleButton>
   );
 }

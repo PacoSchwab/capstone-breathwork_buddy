@@ -2,15 +2,23 @@ import styled from "styled-components";
 
 export const StyledExerciseLinkText = styled.div`
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translate(-45%, -60%);
   color: #ffe6c7;
   text-shadow: 0 0 0.5rem #000;
-  font-size: 1rem;
+  font: var(--font-headline2);
+
+  @media (min-width: 175px) {
+    font-size: 0.75rem;
+  }
+
+  @media (min-width: 320px) {
+    font-size: 1rem;
+  }
 
   @media (min-width: 375px) {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   @media (min-width: 425px) {

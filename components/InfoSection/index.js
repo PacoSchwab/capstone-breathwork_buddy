@@ -9,9 +9,6 @@ export default function InfoSection() {
   return (
     <>
       <StyledInfoArticle>
-        <StyledInfoHeadline>Information & Instructions</StyledInfoHeadline>
-        <br></br>
-
         <section>
           <StyledInfoHeadline>What is focused breathing?</StyledInfoHeadline>
           <StyledInfoText>

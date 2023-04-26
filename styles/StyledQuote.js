@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const StyledSubHeadline = styled.h2`
+export const StyledQuote = styled.p`
   color: #454545;
   font: var(--font-body2);
   margin: 0 0.5rem;
-  align-self: center;
+  align-self: flex-end;
 `;

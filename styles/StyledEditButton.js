@@ -11,9 +11,10 @@ export const StyledEditButton = styled.button`
   background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
   transition: all 0.2s ease-in-out;
   text-align: center;
+  font: var(--font-body2);
   font-size: 0.75rem;
   font-weight: 700;
-  width: 3.8rem;
+  width: 3rem;
   margin: 0.1rem 0.1rem;
   box-shadow: 0px 35px 68px 0px rgba(255, 165, 89, 0.5);
   &:hover {
