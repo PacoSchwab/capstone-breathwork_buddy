@@ -19,6 +19,7 @@
     "react-dom": "18.2.0",
     "react-router-dom": "^6.10.0",
     "styled-components": "^5.3.6",
+    "swr": "^2.1.5",
     "use-local-storage": "^2.3.6",
     "use-local-storage-state": "^18.3.2",
     "use-sound": "^4.0.1",

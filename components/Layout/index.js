@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { StyledSlideAnimation } from "../../styles/StyledSlideAnimation";
 
 const StyledMain = styled.main`
   display: flex;
@@ -9,7 +8,6 @@ const StyledMain = styled.main`
   gap: 4rem;
   max-width: 1200px;
   margin: 0 auto;
-  animation: ${StyledSlideAnimation} 1s ease 0s 1 normal forwards;
 `;
 
 export default function Layout({ children }) {
