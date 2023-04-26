@@ -18,4 +18,16 @@ export const StyledOverviewSection = styled.section`
     height: 55vh;
   }
   margin-top: 5rem;
+  animation: roll 1s ease 0s 1 normal forwards;
+  @keyframes roll {
+    0% {
+      opacity: 0;
+      transform: translateX(-250px) rotate(-200deg);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0) rotate(0deg);
+    }
+  }
 `;
