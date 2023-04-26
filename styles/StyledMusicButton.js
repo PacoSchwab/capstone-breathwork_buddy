@@ -1,8 +1,19 @@
 import styled from "styled-components";
 
 export const StyledMusicButton = styled.button`
-  color: #454545;
+  animation: roll 1s ease 0s 1 normal forwards;
+  @keyframes roll {
+    0% {
+      opacity: 0;
+      transform: translateX(-250px) rotate(-200deg);
+    }
 
+    100% {
+      opacity: 1;
+      transform: translateX(0) rotate(0deg);
+    }
+  }
+  color: #454545;
   backdrop-filter: blur(3px);
   border: 3px solid #454545 outset;
   border-radius: 25%;
@@ -10,6 +21,7 @@ export const StyledMusicButton = styled.button`
   height: 4rem;
   font: var(--font-body2);
   background-color: ${({ decrease }) => (decrease ? "#FFA559" : "#FF6000")};
+  box-shadow: 5px 10px 7.5px #ffa559;
 
   &:visited {
     font-size: 5rem;

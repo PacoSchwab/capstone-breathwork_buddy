@@ -14,4 +14,5 @@ export const StyledToggleButton = styled.button`
     disabled ? "none" : "linear-gradient(120deg, #ffa559 0%, #ffe6c7 100%)"};
   margin: 0 0.5rem;
   width: 19rem;
+  box-shadow: 5px 10px 7.5px #ffa559;
 `;

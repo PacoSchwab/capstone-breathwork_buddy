@@ -6,7 +6,7 @@ export default function CounterSection() {
 
   return (
     <>
-      <Counter breathIntervalDelay={isPowerBreathing ? "100" : "3500"} />
+      <Counter breathIntervalDelay={isPowerBreathing ? "2000" : "3500"} />
     </>
   );
 }
