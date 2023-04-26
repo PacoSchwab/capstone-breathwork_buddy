@@ -13,6 +13,7 @@ export const StyledFabButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 5px 10px 7.5px #ffa559;
   &:hover {
     cursor: url("/images/cursor-blur-s.png"), auto;
   }

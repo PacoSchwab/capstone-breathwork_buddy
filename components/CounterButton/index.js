@@ -17,6 +17,7 @@ export default function CounterButton({
   const breathHoldCountdown = useStore((state) => state.breathHoldCountdown);
   const isLoading = useStore((state) => state.isLoading);
   const switchIsLoading = useStore((state) => state.switchIsLoading);
+  const isPowerBreathing = useStore((state) => state.isPowerBreathing);
 
   useLoading(switchIsLoading);
 
@@ -36,6 +37,7 @@ export default function CounterButton({
           isActive={isBreathActive}
           onClick={!isLoading ? handleBreathClick : null}
           disabled={isBreathActive || isLoading}
+          isPowerBreathing={isPowerBreathing}
         >
           {isLoading ? (
             <StyledInstruction big>Prepare...</StyledInstruction>

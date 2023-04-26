@@ -8,6 +8,7 @@ import useLocalStore from "../useLocalStore";
 import { StyledTitle } from "../../styles/StyledTitle";
 import RetentionTimesList from "../RententionTimesList";
 import IceBathTimesList from "../IceBathTimesList";
+import { StyledTrackingContainer } from "../../styles/StyledTrackingContainer";
 
 export default function TrackingSection() {
   const storedTimes = useLocalStore((state) => state.storedTimes);
@@ -18,7 +19,7 @@ export default function TrackingSection() {
 
   return (
     <>
-      <div style={{ padding: "1rem" }}>
+      <StyledTrackingContainer>
         <StyledTitle>Retention Tracker</StyledTitle>
         <VictoryChart
           domainPadding={{ x: 0, y: 0 }}
@@ -135,7 +136,7 @@ export default function TrackingSection() {
           />
         </VictoryChart>
         <IceBathTimesList lastSevenIceBathTimes={lastSevenIceBathTimes} />
-      </div>
+      </StyledTrackingContainer>
     </>
   );
 }
