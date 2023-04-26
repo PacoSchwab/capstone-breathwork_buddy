@@ -7,10 +7,10 @@ export const StyledExerciseLinkText = styled.div`
   transform: translate(-45%, -60%);
   color: #ffe6c7;
   text-shadow: 0 0 0.5rem #000;
-  font: var(--font-headline2);
+  font: var(--font-headline3);
 
   @media (min-width: 175px) {
-    font-size: 0.75rem;
+    font-size: 1rem;
   }
 
   @media (min-width: 320px) {
@@ -22,10 +22,10 @@ export const StyledExerciseLinkText = styled.div`
   }
 
   @media (min-width: 425px) {
-    font-size: 2rem;
+    font-size: 1.3rem;
   }
 
   @media (min-width: 768px) {
-    font-size: 2.5rem;
+    font-size: 1.6rem;
   }
 `;

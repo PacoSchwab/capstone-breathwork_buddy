@@ -4,51 +4,22 @@ import { useEffect, useState } from "react";
 import useAudio from "../useAudio";
 import { StyledInstruction } from "../../styles/StyledInstruction";
 import { StyledQuote } from "../../styles/StyledQuote";
-import useSWR from "swr";
+import { quotes } from "../../lib/data";
 
 export default function SuccessSection({ breathIntervalDelay }) {
-  const [displayQuote, setDisplayQuote] = useState([]);
-  const fetcher = async (url) => {
-    const res = await fetch(url);
-
-    // If the status code is not in the range 200-299,
-    // we still try to parse and throw it.
-    if (!res.ok) {
-      const error = new Error("An error occurred while fetching the data.");
-      // Attach extra info to the error object.
-      error.info = await res.json();
-      error.status = res.status;
-      throw error;
-    }
-
-    return res.json();
-  };
-  const { data, error, isLoading } = useSWR(
-    "https://type.fit/api/quotes",
-    fetcher
-  );
-
   const router = useRouter();
 
   const { playGong } = useAudio({ breathIntervalDelay });
 
+  const [randomQuote, setRandomQuote] = useState(null);
+
   useEffect(() => {
     playGong();
+    const filteredQuotes = quotes.filter((quote) => quote.author !== null);
+    setRandomQuote(
+      filteredQuotes[Math.floor(Math.random() * filteredQuotes.length)]
+    );
   }, []);
-
-  console.log("data", data);
-
-  const randomQuote =
-    data && data.length > 0 && data[Math.floor(Math.random() * data.length)];
-
-  useEffect(() => {
-    if (randomQuote) {
-      setDisplayQuote(randomQuote);
-    }
-  }, [randomQuote]);
-
-  if (error) return <div>{error.message}</div>;
-  if (isLoading) return <div>loading...</div>;
 
   return (
     <>
@@ -63,7 +34,7 @@ export default function SuccessSection({ breathIntervalDelay }) {
         You are great!
       </StyledButton>
       <StyledQuote>
-        {randomQuote.text} - {randomQuote.author}
+        {`"${randomQuote?.text}"`} <br></br>- {randomQuote?.author}
       </StyledQuote>
     </>
   );

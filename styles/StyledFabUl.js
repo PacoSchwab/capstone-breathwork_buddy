@@ -14,7 +14,16 @@ const rotateIn = keyframes`
 export const StyledFabUl = styled.ul`
   position: fixed;
   bottom: 20px;
-  left: 50%;
+  left: 55%;
+  @media (min-width: 375px) {
+    left: 50%;
+  }
+  @media (min-width: 425px) {
+    left: 45%;
+  }
+  @media (min-width: 1200px) {
+    left: 47%;
+  }
   transform: translateX(-50%);
   display: flex;
   flex-direction: row;

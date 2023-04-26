@@ -4,7 +4,7 @@ export const StyledFabLi = styled.li`
   width: 3rem;
   height: 3rem;
   border-radius: 40%;
-  margin: 0 10px;
+
   transition: transform 0.3s ease-in-out;
   color: #454545;
   backdrop-filter: blur(5px);
@@ -17,7 +17,16 @@ export const StyledFabLi = styled.li`
   text-align: center;
   font-size: 0.75rem;
   font-weight: 700;
-  width: 3.8rem;
+  width: 3rem;
+  @media (min-width: 375px) {
+    width: 3.8rem;
+  }
+  @media (min-width: 425px) {
+    width: 6rem;
+  }
+  @media (min-width: 768px) {
+    width: 6rem;
+  }
   margin: 0.1rem 0.1rem;
   box-shadow: 5px 10px 7.5px #ffa559;
 

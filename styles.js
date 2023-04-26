@@ -16,6 +16,7 @@ export default createGlobalStyle`
 
 --font-headline1: bold 2rem var(--alkatra-family);
 --font-headline2: bold 1.5rem var(--alkatra-family);
+--font-headline3: bold 0.8rem var(--alkatra-family);
 --font-tracking: bold 0.8rem var(--alkatra-family);
 --font-info-text: normal 1rem var(--alkatra-family);
 

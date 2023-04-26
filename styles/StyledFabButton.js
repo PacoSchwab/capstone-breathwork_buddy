@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const StyledFabButton = styled.button`
   position: fixed;
-  bottom: 1rem;
-  right: 1rem;
+  bottom: 1.1rem;
+  right: 1.1rem;
   width: 4rem;
   height: 4rem;
   border-radius: 50%;

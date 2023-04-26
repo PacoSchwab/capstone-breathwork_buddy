@@ -2,10 +2,20 @@ import styled from "styled-components";
 
 export const StyledOverviewSection = styled.section`
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  align-items: center;
-  min-height: 80vh;
-  width: 100%;
-  margin-top: 3rem;
+  align-items: flex-end;
+  height: 40vh;
+  @media (min-width: 375px) {
+    height: 45vh;
+  }
+  @media (min-width: 414px) {
+    height: 40vh;
+  }
+  @media (min-width: 425px) {
+    height: 50vh;
+  }
+  @media (min-width: 768px) {
+    height: 55vh;
+  }
+  margin-top: 5rem;
 `;
