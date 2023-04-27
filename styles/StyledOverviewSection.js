@@ -7,19 +7,11 @@ export const StyledOverviewSection = styled.section`
   height: 35vh;
   @media (min-width: 375px) {
     height: 42vh;
-    width: 30%;
-  }
-  @media (min-width: 414px) {
-    height: 42vh;
-    width: 25%;
-  }
-  @media (min-width: 425px) {
-    height: 42vh;
-    width: 20%;
+    width: 28%;
   }
   @media (min-width: 768px) {
     height: 50vh;
-    width: 20%;
+    width: 25%;
   }
   margin-top: 5rem;
   animation: roll 1s ease 0s 1 normal forwards;
