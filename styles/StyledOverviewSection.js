@@ -4,18 +4,18 @@ export const StyledOverviewSection = styled.section`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  height: 40vh;
+  height: 35vh;
   @media (min-width: 375px) {
-    height: 45vh;
+    height: 42vh;
   }
   @media (min-width: 414px) {
-    height: 40vh;
+    height: 42vh;
   }
   @media (min-width: 425px) {
-    height: 50vh;
+    height: 42vh;
   }
   @media (min-width: 768px) {
-    height: 55vh;
+    height: 50vh;
   }
   margin-top: 5rem;
   animation: roll 1s ease 0s 1 normal forwards;
