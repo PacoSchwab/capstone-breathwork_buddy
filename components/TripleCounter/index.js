@@ -11,6 +11,7 @@ import useStore from "../useStore";
 import TripleCounterButton from "../TripleCounterButton";
 import { StyledRoundContainer } from "../../styles/StyledRoundContainer";
 import { StyledSubHeadline } from "../../styles/StyledSubHeadline";
+import useClearTimer from "../useClearTimer";
 
 export default function TripleCounter({ breathIntervalDelay }) {
   const router = useRouter();
@@ -78,6 +79,16 @@ export default function TripleCounter({ breathIntervalDelay }) {
   const resetTripleCounters = useStore((state) => state.resetTripleCounters);
 
   useClearAudio(stopTripleCounter, stopTripleCounterMusic);
+  useClearTimer(
+    tripleCounterOneIntervalId,
+    tripleCounterTwoIntervalId,
+    tripleCounterThreeIntervalId,
+    switchIsTripleCounterOneActive,
+    switchIsTripleCounterTwoActive,
+    switchIsTripleCounterThreeActive,
+    resetTripleCounters,
+    clearInterval
+  );
 
   useEffect(() => {
     let tripleCounterOneInterval;
