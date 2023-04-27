@@ -5,6 +5,7 @@ export const StyledOverviewSection = styled.section`
   justify-content: center;
   align-items: flex-end;
   height: 35vh;
+  margin-top: 5rem;
   @media (min-width: 375px) {
     height: 42vh;
     width: 28%;
@@ -13,7 +14,11 @@ export const StyledOverviewSection = styled.section`
     height: 50vh;
     width: 25%;
   }
-  margin-top: 5rem;
+  @media (min-height: 850px) {
+    max-height: 350px;
+    margin-top: 8rem;
+  }
+
   animation: roll 1s ease 0s 1 normal forwards;
   @keyframes roll {
     0% {

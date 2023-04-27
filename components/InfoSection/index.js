@@ -4,6 +4,7 @@ import { StyledInfoImage } from "../../styles/StyledInfoImage";
 import { StyledInfoList } from "../../styles/StyledInfoList";
 import { StyledInstructionHeadline } from "../../styles/StyledInstructionHeadline";
 import { StyledInfoHeadline } from "../../styles/StyledInfoHeadline";
+import AboutMeSection from "../AboutMeSection";
 
 export default function InfoSection() {
   return (
@@ -177,6 +178,7 @@ export default function InfoSection() {
           </StyledInfoList>
         </section>
         <StyledInfoImage src="/images/icebath.jpg" alt="ice bath" />
+        <AboutMeSection />
       </StyledInfoArticle>
     </>
   );
