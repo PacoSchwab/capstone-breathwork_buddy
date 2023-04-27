@@ -12,7 +12,7 @@ export const StyledToggleButton = styled.button`
   background-color: ${({ disabled }) => (disabled ? "#ffe6c7" : "none")};
   background-image: ${({ disabled }) =>
     disabled ? "none" : "linear-gradient(120deg, #ffa559 0%, #ffe6c7 100%)"};
-  margin: 0 0.5rem;
+  margin: 0 0.75rem;
   width: 19rem;
   box-shadow: 5px 10px 7.5px #ffa559;
 `;

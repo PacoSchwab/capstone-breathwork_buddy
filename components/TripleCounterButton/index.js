@@ -7,10 +7,8 @@ import useLoading from "../useLoading";
 export default function TripleCounterButton({
   stopTripleCounter,
   stopTripleCounterMusic,
-  playGong,
   playTripleCounter,
   playTripleCounterMusic,
-  router,
 }) {
   const tripleCounterOne = useStore((state) => state.tripleCounterOne);
   const tripleCounterTwo = useStore((state) => state.tripleCounterTwo);
@@ -32,15 +30,17 @@ export default function TripleCounterButton({
 
   useLoading(switchIsLoading);
 
+  const handleLeadSuccess = () => {
+    window.location.reload();
+    window.location.href = "/success";
+  };
+
   function handleStopTripleCounter() {
     if (!isLoading) {
       isTripleCounterOneActive ||
       isTripleCounterTwoActive ||
       isTripleCounterThreeActive
-        ? (router.push("/success"),
-          stopTripleCounter(),
-          stopTripleCounterMusic(),
-          playGong())
+        ? (stopTripleCounter(), stopTripleCounterMusic(), handleLeadSuccess())
         : (switchIsTripleCounterOneActive(true),
           playTripleCounterMusic(),
           playTripleCounter());

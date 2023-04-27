@@ -5,14 +5,35 @@ import { StyledFabLi } from "../../styles/StyledFabLi";
 import useStore from "../useStore";
 import Image from "next/image";
 import Link from "next/link";
+import useAudio from "../useAudio";
+import { useRouter } from "next/router";
 
-export default function FabMenu() {
+export default function FabMenu(breathIntervalDelay) {
   const isMenuOpen = useStore((state) => state.isMenuOpen);
   const switchIsMenuOpen = useStore((state) => state.switchIsMenuOpen);
 
+  const handleLeadHome = () => {
+    window.location.reload();
+    window.location.href = "/";
+  };
+
+  const handleLeadTracking = () => {
+    window.location.reload();
+    window.location.href = "/tracking";
+  };
+
+  const handleLeadInfo = () => {
+    window.location.reload();
+    window.location.href = "/info";
+  };
+
   return (
     <StyledFabWrapper>
-      <StyledFabButton onClick={() => switchIsMenuOpen()}>
+      <StyledFabButton
+        onClick={() => {
+          switchIsMenuOpen();
+        }}
+      >
         <Image
           src="/images/purplesmokePlus.png"
           height={80}
@@ -29,6 +50,9 @@ export default function FabMenu() {
                 height={45}
                 width={45}
                 alt="breathing exercises"
+                onClick={() => {
+                  handleLeadHome();
+                }}
               />
             </StyledFabLi>
           </Link>
@@ -39,6 +63,9 @@ export default function FabMenu() {
                 height={45}
                 width={45}
                 alt="tracking"
+                onClick={() => {
+                  handleLeadTracking();
+                }}
               />
             </StyledFabLi>
           </Link>
@@ -49,6 +76,9 @@ export default function FabMenu() {
                 height={45}
                 width={45}
                 alt="information"
+                onClick={() => {
+                  handleLeadInfo();
+                }}
               />
             </StyledFabLi>
           </Link>

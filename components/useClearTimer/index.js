@@ -6,7 +6,14 @@ const useClearTimer = (
   resetIceBathCountdown,
   switchIceBathCountdownIsActive,
   iceBathIntervalId,
-  iceBathCountdownIntervalId
+  iceBathCountdownIntervalId,
+  tripleCounterOneIntervalId,
+  tripleCounterTwoIntervalId,
+  tripleCounterThreeIntervalId,
+  resetTripleCounters,
+  switchIsTripleCounterOneActive,
+  switchIsTripleCounterTwoActive,
+  switchIsTripleCounterThreeActive
 ) => {
   useEffect(() => {
     function handlePopState() {
@@ -16,6 +23,13 @@ const useClearTimer = (
       switchIceBathCountdownIsActive(false);
       clearInterval(iceBathIntervalId);
       clearInterval(iceBathCountdownIntervalId);
+      resetTripleCounters();
+      switchIsTripleCounterOneActive(false);
+      switchIsTripleCounterTwoActive(false);
+      switchIsTripleCounterThreeActive(false);
+      clearInterval(tripleCounterOneIntervalId);
+      clearInterval(tripleCounterTwoIntervalId);
+      clearInterval(tripleCounterThreeIntervalId);
     }
 
     window.addEventListener("popstate", handlePopState);

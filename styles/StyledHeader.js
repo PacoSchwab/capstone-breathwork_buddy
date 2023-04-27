@@ -3,9 +3,14 @@ import styled from "styled-components";
 export const StyledHeader = styled.h1`
   top: 0;
   width: 100%;
+  height: 6.5rem;
   margin: 0;
   padding: 0.75rem;
-  font: var(--font-headline1);
+  font: var(--font-headline2);
+  @media (min-width: 375px) {
+    font: var(--font-headline1);
+  }
+
   background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
   border-radius: 0% 0% 20% 20%;
   color: #454545;

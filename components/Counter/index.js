@@ -30,7 +30,6 @@ export default function Counter({ breathIntervalDelay }) {
     stopCountdownMusic,
     audio,
     music,
-    playGong,
   } = useAudio({ breathIntervalDelay });
 
   const addStoredTime = useLocalStore((state) => state.addStoredTime);
@@ -116,7 +115,6 @@ export default function Counter({ breathIntervalDelay }) {
         handleCounterRepeat();
       } else {
         router.push("/success");
-        playGong();
       }
     }
 
