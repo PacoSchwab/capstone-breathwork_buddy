@@ -33,7 +33,6 @@ export default function IceBathButton({ displayTime, playGong }) {
       switchIceBathCountIsActive(false);
       clearInterval(iceBathIntervalId);
       router.push("/success");
-      playGong();
     } else {
       switchIceBathCountdownIsActive(true);
     }

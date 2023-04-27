@@ -19,7 +19,7 @@ export default function SuccessSection({ breathIntervalDelay }) {
     setRandomQuote(
       filteredQuotes[Math.floor(Math.random() * filteredQuotes.length)]
     );
-  }, []);
+  }, [playGong]);
 
   return (
     <>
