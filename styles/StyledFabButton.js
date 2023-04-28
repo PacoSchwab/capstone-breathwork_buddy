@@ -5,6 +5,14 @@ export const StyledFabButton = styled.button`
   bottom: 1.1rem;
   right: 1.1rem;
   width: 4rem;
+  @media (min-width: 768px) {
+    width: 6rem;
+    height: 6rem;
+  }
+  @media (min-width: 1024px) {
+    width: 7rem;
+    height: 7rem;
+  }
   height: 4rem;
   border-radius: 50%;
   background-color: #ffe6c7;

@@ -6,6 +6,10 @@ export const StyledCounterSection = styled.section`
   flex-direction: row;
   justify-content: space-between;
   margin-top: 7rem;
+  @media (min-height: 850px) {
+    margin-top: 14rem;
+  }
+
   margin-bottom: 1.5rem;
   animation: ${StyledSlideAnimation} 1s ease 0s 1 normal forwards;
 `;

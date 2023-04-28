@@ -22,7 +22,13 @@ export const StyledOverviewSection = styled.section`
     max-height: 350px;
     margin-top: 8rem;
   }
-
+  @media (min-height: 1024px) {
+    max-height: 350px;
+    margin-top: 14rem;
+  }
+  @media (min-height: 1200px) {
+    margin-top: 16rem;
+  }
   animation: roll 1s ease 0s 1 normal forwards;
   @keyframes roll {
     0% {
