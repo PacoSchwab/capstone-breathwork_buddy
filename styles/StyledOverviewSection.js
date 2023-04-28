@@ -17,6 +17,7 @@ export const StyledOverviewSection = styled.section`
   @media (min-width: 1024px) {
     height: 60vh;
     width: 20%;
+    margin-top: 8rem;
   }
   @media (min-height: 850px) {
     max-height: 350px;
