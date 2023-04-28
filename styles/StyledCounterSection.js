@@ -7,7 +7,7 @@ export const StyledCounterSection = styled.section`
   justify-content: space-between;
   margin-top: 7rem;
   @media (min-height: 850px) {
-    margin-top: 14rem;
+    margin-top: 13rem;
   }
 
   margin-bottom: 1.5rem;
