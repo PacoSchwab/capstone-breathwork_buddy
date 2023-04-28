@@ -5,10 +5,8 @@ import { StyledFabLi } from "../../styles/StyledFabLi";
 import useStore from "../useStore";
 import Image from "next/image";
 import Link from "next/link";
-import useAudio from "../useAudio";
-import { useRouter } from "next/router";
 
-export default function FabMenu(breathIntervalDelay) {
+export default function FabMenu() {
   const isMenuOpen = useStore((state) => state.isMenuOpen);
   const switchIsMenuOpen = useStore((state) => state.switchIsMenuOpen);
 
