@@ -17,18 +17,23 @@ export const StyledFabLi = styled.li`
   text-align: center;
   font-size: 0.75rem;
   font-weight: 700;
-  width: 3rem;
+  margin: 0.1rem 0.1rem;
+  box-shadow: 5px 10px 7.5px #ffa559;
   @media (min-width: 375px) {
     width: 3.8rem;
   }
   @media (min-width: 425px) {
-    width: 6rem;
+    width: 5rem;
   }
   @media (min-width: 768px) {
     width: 6rem;
+    height: 4rem;
   }
-  margin: 0.1rem 0.1rem;
-  box-shadow: 5px 10px 7.5px #ffa559;
+  @media (min-width: 1024px) {
+    width: 5rem;
+    height: 5rem;
+    margin: 0.1rem 1rem;
+  }
 
   &:hover {
     transform: scale(1.2);
