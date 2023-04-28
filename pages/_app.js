@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>globehopper</title>
+        <title>Breathwork Buddy</title>
         <meta name="description" content="Breathwork Buddy"></meta>
       </Head>
       <GlobalStyle />
