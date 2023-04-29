@@ -5,7 +5,6 @@ import { StyledFabLi } from "../../styles/StyledFabLi";
 import { StyledFabImage } from "../../styles/StyledFabImage";
 import { StyledPathButton } from "../../styles/StyledPathButton";
 import useStore from "../useStore";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function FabMenu() {
@@ -42,7 +41,7 @@ export default function FabMenu() {
             <StyledFabLi>
               <StyledPathButton
                 src="/images/lungs.svg"
-                alt="breathing exercises"
+                alt="Link to breathing exercises"
                 onClick={() => {
                   handleLeadHome();
                 }}
@@ -53,7 +52,7 @@ export default function FabMenu() {
             <StyledFabLi>
               <StyledPathButton
                 src="/images/stopwatch.svg"
-                alt="tracking"
+                alt="Link to tracking"
                 onClick={() => {
                   handleLeadTracking();
                 }}
@@ -64,7 +63,7 @@ export default function FabMenu() {
             <StyledFabLi>
               <StyledPathButton
                 src="/images/info.svg"
-                alt="information"
+                alt="Link to information"
                 onClick={() => {
                   handleLeadInfo();
                 }}
