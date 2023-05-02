@@ -5,4 +5,5 @@ export const StyledInstruction2 = styled.p`
   margin-top: 0.5rem;
   margin-bottom: 0;
   font: var(--font-body2);
+  font-size: 1.3rem;
 `;

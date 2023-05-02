@@ -20,6 +20,8 @@ export const StyledMusicButton = styled.button`
   width: 4rem;
   height: 4rem;
   font: var(--font-body2);
+  font-size: 1.5rem;
+  padding: 0;
   background-color: ${({ decrease }) => (decrease ? "#FFA559" : "#FF6000")};
   box-shadow: 5px 10px 7.5px #ffa559;
 

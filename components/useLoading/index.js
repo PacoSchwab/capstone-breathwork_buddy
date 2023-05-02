@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 
-const useLoading = (switchIsLoading) => {
+const useLoading = (switchIsLoading, loadingDelay) => {
   useEffect(() => {
-    const timer = setTimeout(() => switchIsLoading(false), 2000);
+    const timer = setTimeout(() => switchIsLoading(false), loadingDelay);
     return () => clearTimeout(timer);
   }, []);
 };
