@@ -1,17 +1,20 @@
 import { StyledVolumeControl } from "../../styles/StyledVolumeControl";
 import { StyledMusicButton } from "../../styles/StyledMusicButton";
+import useAudio from "../useAudio";
 
 export default function MusicControl({
   music,
   handleIncreaseMusicVolume,
   handleDecreaseMusicVolume,
+  breathIntervalDelay,
 }) {
+  const { playClick } = useAudio({ breathIntervalDelay });
   return (
     <StyledVolumeControl>
       <StyledMusicButton
         aria-label="Increase music volume"
         onClick={() => {
-          handleIncreaseMusicVolume();
+          handleIncreaseMusicVolume(), playClick();
         }}
         disabled={music.volume >= 1}
       >
@@ -20,7 +23,7 @@ export default function MusicControl({
       <StyledMusicButton
         aria-label="Decrease music volume"
         onClick={() => {
-          handleDecreaseMusicVolume();
+          handleDecreaseMusicVolume(), playClick();
         }}
         disabled={music.volume <= 0}
         decrease
