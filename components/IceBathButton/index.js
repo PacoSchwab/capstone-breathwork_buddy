@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { StyledInstruction } from "../../styles/StyledInstruction";
 import { StyledSpan } from "../../styles/StyledSpan";
 
-export default function IceBathButton({ displayTime, playGong }) {
+export default function IceBathButton({ displayTime }) {
   const resetIceBathCount = useStore((state) => state.resetIceBathCount);
   const switchIceBathCountIsActive = useStore(
     (state) => state.switchIceBathCountIsActive

@@ -20,7 +20,7 @@ export default function ToggleBreathmodeButton() {
       {!isBreathActive && (
         <StyledClickToSwitch>Click to Switch</StyledClickToSwitch>
       )}
-      <StyledSubHeadline>
+      <StyledSubHeadline data-testid="breath-mode-text">
         {isPowerBreathing ? "Power Breathing" : "Focus Breathing"}
       </StyledSubHeadline>
     </StyledToggleButton>
