@@ -45,7 +45,7 @@ export default function useAudio({ breathIntervalDelay }) {
   );
 
   const [playGong] = useSound("/audio/gong.mp3");
-  /* const [playClick] = useSound("/audio/click.mp3"); */
+  const [playClick] = useSound("/audio/click.mp3");
 
   return {
     playCounter: playCounterSound,
@@ -71,6 +71,6 @@ export default function useAudio({ breathIntervalDelay }) {
       setVolume: setMusicVolume,
     },
     playGong,
-    /* playClick, */
+    playClick,
   };
 }
