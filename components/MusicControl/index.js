@@ -1,6 +1,8 @@
 import { StyledVolumeControl } from "../../styles/StyledVolumeControl";
 import { StyledMusicButton } from "../../styles/StyledMusicButton";
 import useAudio from "../useAudio";
+import { StyledMusicIcons } from "../../styles/StyledMusicIcons";
+import { StyledMusicControls } from "../../styles/StyledMusicControls";
 
 export default function MusicControl({
   music,
@@ -18,7 +20,12 @@ export default function MusicControl({
         }}
         disabled={music.volume >= 1}
       >
-        Music +
+        <StyledMusicIcons
+          music
+          src="/images/music.svg"
+          alt="increase music volume"
+        />
+        <StyledMusicControls>+</StyledMusicControls>
       </StyledMusicButton>
       <StyledMusicButton
         aria-label="Decrease music volume"
@@ -28,7 +35,12 @@ export default function MusicControl({
         disabled={music.volume <= 0}
         decrease
       >
-        Music -
+        <StyledMusicIcons
+          music
+          src="/images/music.svg"
+          alt="decrease music volume"
+        />
+        <StyledMusicControls>-</StyledMusicControls>
       </StyledMusicButton>
     </StyledVolumeControl>
   );

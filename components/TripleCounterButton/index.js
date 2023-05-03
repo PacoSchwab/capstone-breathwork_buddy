@@ -28,7 +28,7 @@ export default function TripleCounterButton({
   const isLoading = useStore((state) => state.isLoading);
   const switchIsLoading = useStore((state) => state.switchIsLoading);
 
-  useLoading(switchIsLoading);
+  useLoading(switchIsLoading, 6000);
 
   const handleLeadSuccess = () => {
     window.location.reload();

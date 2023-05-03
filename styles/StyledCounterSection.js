@@ -9,6 +9,6 @@ export const StyledCounterSection = styled.section`
   @media (min-height: 850px) {
     margin-top: 13rem;
   }
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
   animation: ${StyledSlideAnimation} 1s ease 0s 1 normal forwards;
 `;

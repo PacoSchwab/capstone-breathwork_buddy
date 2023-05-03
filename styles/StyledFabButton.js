@@ -5,6 +5,7 @@ export const StyledFabButton = styled.button`
   bottom: 1.1rem;
   right: 1.1rem;
   width: 4rem;
+  opacity: 0.25;
   @media (min-width: 768px) {
     width: 6rem;
     height: 6rem;
@@ -24,8 +25,10 @@ export const StyledFabButton = styled.button`
   box-shadow: 5px 10px 7.5px #ffa559;
   &:hover {
     cursor: url("/images/cursor-blur-s.png"), auto;
+    opacity: 1;
   }
   &:active {
     cursor: url("/images/cursor-trans-s.png"), auto;
+    opacity: 1;
   }
 `;

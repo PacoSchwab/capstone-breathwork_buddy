@@ -60,11 +60,14 @@ export const StyledButton = styled.button`
   height: 10rem;
   font: var(--font-body1);
   font-size: ${({ isActive, isRetentionFinished, retention, iceBath }) =>
-    isActive || isRetentionFinished
-      ? "6rem"
+    isActive
+      ? "1.5rem"
       : retention || iceBath
       ? "3rem"
+      : isRetentionFinished
+      ? "5rem"
       : "2rem"};
+  padding: 0;
   background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
   margin: 0 2rem;
 
