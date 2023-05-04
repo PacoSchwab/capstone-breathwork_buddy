@@ -19,7 +19,7 @@ export default function CounterButton({
   const switchIsLoading = useStore((state) => state.switchIsLoading);
   const isPowerBreathing = useStore((state) => state.isPowerBreathing);
 
-  useLoading(switchIsLoading, 4000);
+  useLoading(switchIsLoading, 5000);
 
   return (
     <>
