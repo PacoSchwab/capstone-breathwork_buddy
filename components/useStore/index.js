@@ -156,6 +156,10 @@ const useStore = create((set) => ({
     set(() => ({
       iceBathCountdownIsActive: bool,
     })),
+    increaseIceBathCountdown: () =>
+    set((state) => ({
+      iceBathCountdown: state.iceBathCountdown + 1,
+    })),
   decreaseIceBathCountdown: () =>
     set((state) => ({
       iceBathCountdown: state.iceBathCountdown - 1,

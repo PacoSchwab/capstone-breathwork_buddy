@@ -153,6 +153,9 @@ export default function InfoSection() {
               consult with a healthcare professional before trying cold
               exposure, especially if you have any underlying health conditions.
             </li>
+            <li>Set the preparation countdown before the actual start of the cold 
+              exposure by pressing the hourglass buttons. The default is 10 seconds 
+              before the counter starts.</li>
             <li>Push the button to start the counter.</li>
             <li>
               A countdown of 10 seconds will start to give you enough time to

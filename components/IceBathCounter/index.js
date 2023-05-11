@@ -9,10 +9,7 @@ import IceBathButton from "../IceBathButton";
 import useTimeFormatter from "../useTimeFormatter";
 import { StyledRoundContainer } from "../../styles/StyledRoundContainer";
 import { StyledSubHeadline } from "../../styles/StyledSubHeadline";
-import { StyledCountdownButton } from "../../styles/StyledCountdownButton";
-import { StyledVolumeControl } from "../../styles/StyledVolumeControl";
-import { StyledMusicIcons } from "../../styles/StyledMusicIcons";
-import { StyledMusicControls } from "../../styles/StyledMusicControls";
+import IceBathCountdownSetter from "../IceBathCountdownSetter";
 
 export default function IceBathCounter({ breathIntervalDelay }) {
   const iceBathCount = useStore((state) => state.iceBathCount);
@@ -106,37 +103,7 @@ export default function IceBathCounter({ breathIntervalDelay }) {
       </StyledCounterSection>
       <StyledRoundContainer iceBathing>
         <StyledSubHeadline>Ice Bathing</StyledSubHeadline>
-        <StyledVolumeControl>
-        <StyledCountdownButton
-       /*  aria-label="Increase music volume"
-        onClick={() => {
-          handleIncreaseMusicVolume(), playClick();
-        }}
-        disabled={music.volume >= 1} */
-      >
-        <StyledMusicIcons
-         
-          src="/images/countdownicon.svg"
-          alt="increase music volume"
-        />
-        <StyledMusicControls>+</StyledMusicControls>
-      </StyledCountdownButton>
-      <StyledCountdownButton
-    /*     aria-label="Decrease music volume"
-        onClick={() => {
-          handleDecreaseMusicVolume(), playClick();
-        }}
-        disabled={music.volume <= 0}
-        decrease */
-      >
-        <StyledMusicIcons
-          
-          src="/images/countdownicon.svg"
-          alt="decrease music volume"
-        />
-        <StyledMusicControls>-</StyledMusicControls>
-        </StyledCountdownButton>
-</StyledVolumeControl>
+        <IceBathCountdownSetter />
       </StyledRoundContainer>
     </>
   );
