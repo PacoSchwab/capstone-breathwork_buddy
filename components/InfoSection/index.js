@@ -91,8 +91,8 @@ export default function InfoSection() {
             practiced at any time of day, but it&apos;s especially useful before
             bed to promote better sleep.
           </StyledInfoText>
+          <StyledInstructionHeadline>Instruction</StyledInstructionHeadline>
           <StyledInfoList>
-            <StyledInstructionHeadline>Instruction</StyledInstructionHeadline>
             <li>
               Sit up straight and place the tip of your tongue against the roof
               of your mouth, behind your front teeth.
@@ -118,44 +118,46 @@ export default function InfoSection() {
           <StyledInfoHeadline>What is ice bathing?</StyledInfoHeadline>
           <StyledInfoText>
             Practioners of ice bathing claim the following benefits:
-            <ol>
-              <li>
-                Improved immune function: Exposure to cold temperatures can
-                stimulate the production of white blood cells, which can help
-                the body fight off infections and diseases.
-              </li>
-              <li>
-                Increased energy and alertness: Cold showers can stimulate the
-                release of adrenaline and other hormones, which can increase
-                energy and mental clarity.{" "}
-              </li>
-              <li>
-                Reduced inflammation: Cold exposure has been shown to reduce
-                inflammation in the body, which can help alleviate symptoms of
-                chronic pain and other inflammatory conditions.
-              </li>
-              <li>
-                Improved circulation: Cold water immersion can increase blood
-                flow and circulation, which can help reduce muscle soreness and
-                improve overall health.{" "}
-              </li>
-              <li>
-                Enhanced mood and resilience: Cold exposure has been shown to
-                improve mood and increase resilience to stress, anxiety, and
-                depression.
-              </li>
-            </ol>
           </StyledInfoText>
           <StyledInfoList>
-            <StyledInstructionHeadline>Instruction</StyledInstructionHeadline>
+            <li>
+              Improved immune function: Exposure to cold temperatures can
+              stimulate the production of white blood cells, which can help the
+              body fight off infections and diseases.
+            </li>
+            <li>
+              Increased energy and alertness: Cold showers can stimulate the
+              release of adrenaline and other hormones, which can increase
+              energy and mental clarity.
+            </li>
+            <li>
+              Reduced inflammation: Cold exposure has been shown to reduce
+              inflammation in the body, which can help alleviate symptoms of
+              chronic pain and other inflammatory conditions.
+            </li>
+            <li>
+              Improved circulation: Cold water immersion can increase blood flow
+              and circulation, which can help reduce muscle soreness and improve
+              overall health.
+            </li>
+            <li>
+              Enhanced mood and resilience: Cold exposure has been shown to
+              improve mood and increase resilience to stress, anxiety, and
+              depression.
+            </li>
+          </StyledInfoList>
+          <StyledInstructionHeadline>Instruction</StyledInstructionHeadline>
+          <StyledInfoList>
             <li>
               As with any form of therapy or exercise, it&apos;s important to
               consult with a healthcare professional before trying cold
               exposure, especially if you have any underlying health conditions.
             </li>
-            <li>Set the preparation countdown before the actual start of the cold 
-              exposure by pressing the hourglass buttons. The default is 10 seconds 
-              before the counter starts.</li>
+            <li>
+              Set the preparation countdown before the actual start of the cold
+              exposure by pressing the hourglass buttons. The default is 10
+              seconds before the counter starts.
+            </li>
             <li>Push the button to start the counter.</li>
             <li>
               A countdown of 10 seconds will start to give you enough time to
